@@ -1,0 +1,90 @@
+CAPA RAPORU / CORRECTIVE & PREVENTIVE ACTION REPORT
+=====================================================
+Şirket:     DEF Otomotiv Montaj San. A.Ş.
+Müşteri:    GHI Araç Fabrikası
+Parça No:   7610-MT-043
+Parça Adı:  Direksiyon Mili Montaj Grubu
+Tarih:      2024-04-08
+CAPA No:    CAPA-2024-047
+=====================================================
+
+SORUN TANIMI / PROBLEM DESCRIPTION
+------------------------------------
+Müşteri üretim hattı, direksiyon mili montaj grubunda yanlış tork değeri
+tespit etti. Ölçüm: 18 Nm (nominal: 22 Nm ± 2 Nm tolerans).
+Kümülatif etkilenen miktar: 180 adet (müşteri hattında), 320 adet (stok).
+Tespit istasyonu: Müşteri finali muayene hattı, Priz 12.
+Tespit tarihi: 05.04.2024 — Kalite Kontrol Şefi: R. Yıldız
+
+CONTAINMENT ACTION / GEÇİCİ ÖNLEM
+------------------------------------
+1. 180 adet şüpheli parça müşteri hattında belirlendi ve karantinaya alındı.
+2. Tedarikçi deposundaki 320 adet %100 yeniden muayene edildi — 47 adet
+   aynı tork sapmasını gösterdi; bunlar ayıklandı ve imha edildi.
+3. Hatta kalan ürünlerin spot tork kontrolü yapıldı.
+4. Müşteri üretim hattına geçici kontrol amaçlı ek muayene istasyonu kurdu.
+5. Müşteri onayı alınmadan yeni sevkiyat durduruldu.
+
+Muhafaza doğrulama tarihi: 06.04.2024 — R. Yıldız
+
+KÖK NEDEN ANALİZİ / ROOT CAUSE ANALYSIS
+------------------------------------------
+Araç: Balık kılçığı (Ishikawa) diyagramı + 5 Neden analizi
+
+5 Neden:
+Neden 1: Direksiyon mili tork değeri spesifikasyonun altında.
+Neden 2: Montaj operatörü kalibrasyon süresi dolmuş tork anahtarı kullandı.
+Neden 3: Vadesi geçmiş alet, aktif alet kovasında bulundu.
+Neden 4: Alet kabini kontrol sistemi, süresi dolmuş aletleri işaretlemez.
+Neden 5: Alet yönetim prosedürü ERP takibine entegre değil; manuel kontrol
+          sadece aylık yapılıyor.
+
+Kök neden: Alet kalibrasyon takibi ERP'ye bağlı değil; vadesi dolmuş aletlerin
+üretim alanından otomatik olarak çıkarılmasını sağlayan mekanizma yok.
+
+DÜZELTİCİ AKSİYON / CORRECTIVE ACTION
+-----------------------------------------
+1. Tüm tork aletleri kalibrasyona gönderildi; vadesi geçmiş 3 alet imha edildi.
+   Tamamlandı: 07.04.2024
+2. ERP sistemine alet kalibrasyon modülü eklendi; vade yaklaşınca otomatik
+   uyarı, vade geçince üretim emri kilidi devreye giriyor.
+   Tamamlandı: 10.04.2024
+3. Kontrol planı CP-7610-043 Rev B güncellendi: her vardiya başında tork
+   aleti kalibrasyon etiket kontrolü zorunlu hale getirildi.
+   Tamamlandı: 09.04.2024
+4. 2 operatör ve 1 ekip lideri alet yönetimi konusunda yeniden eğitildi.
+   Tamamlandı: 11.04.2024
+
+ETKİNLİK DOĞRULAMA / EFFECTIVENESS VERIFICATION
+--------------------------------------------------
+ERP entegrasyonu sonrası ilk 4 üretim partisi kontrol edildi:
+  - Parti 1: 22.1 Nm (±0.3) — UYGUN
+  - Parti 2: 21.9 Nm (±0.4) — UYGUN
+  - Parti 3: 22.2 Nm (±0.2) — UYGUN
+  - Parti 4: 22.0 Nm (±0.3) — UYGUN
+Ortalama tork: 22.05 Nm — spesifikasyon içinde.
+
+30 günlük takip planlandı: 10.05.2024
+Müşteri denetimi: Bekleniyor
+
+ÖNLEYİCİ AKSİYON / PREVENTIVE ACTION
+----------------------------------------
+1. ERP alet kalibrasyon modülü tüm üretim hatlarına yaygınlaştırıldı (6 hat).
+   Sorumlu: E. Kaya — Termin: 30.04.2024
+2. Tedarikçi denetim kontrol listesi, alet kalibrasyon yönetimi doğrulama
+   adımını içerecek şekilde güncellendi.
+   Sorumlu: R. Yıldız — Termin: 20.04.2024
+3. Çıkan dersler (lessons learned) tüm montaj ekiplerine paylaşıldı.
+   Sorumlu: E. Kaya — Termin: 15.04.2024
+
+KAPANIS / CLOSURE
+-------------------
+Düzeltici aksiyon tamamlandı: 12.04.2024
+Müşteri onayı alındı: 15.04.2024
+Ekip üyeleri: R. Yıldız, E. Kaya, M. Demir, S. Çetin
+
+=====================================================
+Owner / Sorumlu: R. Yıldız (Kalite Kontrol Şefi)
+Due date / Termin: 15.04.2024
+Status: KAPALI
+=====================================================

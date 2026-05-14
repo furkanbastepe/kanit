@@ -1,0 +1,48 @@
+{
+  "research_item": "Buildathon Audience and Pitch Focus",
+  "executive_verdict": "The critique is valid: for this buildathon, KANIT should not be presented primarily as a 30-day commercial pilot or a broad supplier-readiness platform. The strongest 3-minute version is a narrow, working, evidence-based AI demo: three closed 8D/CAPA cases are analyzed, the system maps repeated evidence failures to one canonical skill gap, and then produces a transparent shift readiness score with an explanation. The commercial story should appear only after the working demo, as future applicability for Ford suppliers. The buildathon audience is likely to reward a clear problem, visible AI integration, a working prototype, and a disciplined demo more than a large enterprise sales narrative.",
+  "critique_validity": "Valid. The local buildathon brief explicitly weights problem meaningfulness, AI integration, and working prototype at 25% each, with presentation and demo at 15% and AI tool diversity at 10%. This makes the critique correct: the project must prove one reliable AI-powered workflow, not over-explain future sales channels. External AI hackathon rubrics reinforce the same pattern: judges look for problem evidence, appropriate AI use, functional demo behavior, technical implementation, feasibility, and clear presentation. A commercial pitch is useful only if it supports feasibility and impact; it should not consume the main demo time.",
+  "evidence_from_sources": [
+    "The local AI Buildathon brief says the project must address a meaningful real-world problem with AI and produce a concrete working prototype in 10 days. It also requires GitHub delivery, a published link, and a 2-3 minute demo video.",
+    "The local AI Buildathon scoring table gives 25% to problem meaningfulness, 25% to AI integration, 25% to working prototype, 15% to presentation/demo, and 10% to AI tool diversity.",
+    "The U.S. Federal AI Hackathon judging criteria include relevance and impact, technical implementation, AI integration/performance, feasibility, and presentation/documentation.",
+    "The Inter-University GenAI Hackathon rubric asks teams to show a specific, evidence-supported problem, a functional prototype, appropriate GenAI use, feasibility, impact, and technical limitations.",
+    "HackHQ's judging guidance uses a similar structure: technical implementation, business value and impact, presentation and communication, and clear scoring criteria.",
+    "UP School's AI-First Developer program emphasizes AI-first coding, API integration, DevOps, AI in QA/testing, ethical AI, critical thinking, problem solving, and strong communication, which implies that a technically credible backend plus clear explanation will be valued.",
+    "A 2026 ESTU-Ford Otosan Academy session on digital transformation and AI covered image processing, data storage, cloud, smart factories, production line optimization, predictive maintenance, connected vehicles, AI ethics, human oversight, and accountability. This supports framing KANIT around explainable, human-reviewed industrial AI rather than a black-box AI score."
+  ],
+  "ford_or_automotive_relevance": "Ford Otosan and Ford-facing mentors are unlikely to be impressed by a generic AI training assistant. They are more likely to reward a manufacturing-grounded workflow that connects quality evidence, repeated operational errors, human oversight, and transparent readiness decisions. However, the exact composition and preferences of the current buildathon jury are not publicly verified beyond the local brief, so the safest assumption is to optimize for the published criteria: real problem, AI at the center, working prototype, clear demo, and visible use of modern AI tools. The Ford-specific angle should be expressed through quality incidents, 8D/CAPA evidence, shift readiness, and human approval, not through unproven claims that Ford would immediately buy the product.",
+  "technical_implication": "The backend must make the demo auditable. It should use a fixed skill ontology with canonical IDs, not free-form LLM labels; schema-constrained AI outputs; deterministic sample cases; formula-based readiness scoring; evidence traces that show which incidents created the gap; and clear separation between AI interpretation and rule-based scoring. The technical centerpiece should be: input incident text, AI extracts evidence issues into controlled codes, the system maps those codes to canonical skills, the miner detects repeated gaps, and the readiness engine computes a score with a visible formula.",
+  "demo_implication": "The 3-minute demo should be simplified to three screens: Demo Launcher, Evidence Graph, and Shift Readiness Board. The Export Timeline should be removed from the live demo unless there is extra time. COPQ/scrap exposure should be removed from the main demo and kept as roadmap or an optional appendix because user-assumption-based cost multiplication can look weak. The demo should use pre-designed sample 8D cases that reliably trigger the same canonical skill gap; this is not dishonest if presented as demo data. The key visual moment should be three incidents converging into one canonical skill node, followed by a readiness score whose formula is shown on screen.",
+  "buildathon_implication": "To maximize score, KANIT should map directly to the rubric. Problem meaningfulness: repeated quality incidents do not automatically become learning signals, creating recurring operational risk. AI integration: AI extracts structured evidence issues from messy 8D/CAPA text, but the system constrains outputs to an ontology and uses rules for scoring. Working prototype: one end-to-end flow must run reliably from sample incident to repeated gap to readiness score. Presentation/demo: the story must be understandable in under 30 seconds and the demo must show real input-output behavior. Tool diversity: mention NVIDIA API, backend API, structured prompts, schema validation, tests, and future n8n/LMS integration, but do not let tool talk replace the working product.",
+  "recommended_decision": "Modify the current pitch. Keep the Quality-to-Readiness positioning, but narrow the live demo to one auditable workflow. Remove COPQ from the main demo, defer export integrations to a short roadmap sentence, and avoid a sales-first framing. Implement or verify three P0 demo safeguards before frontend work: canonical skill ontology, transparent readiness formula, and deterministic sample cases. The commercial pilot story should be one closing sentence, not the core of the pitch.",
+  "implementation_priority": "P0. This affects whether the buildathon demo survives judge scrutiny. Without ontology-locked labels, pattern mining can fail. Without formula-based scoring, the readiness number looks arbitrary. Without deterministic sample cases, the live demo can look like a mock or break under LLM variation. These are not polish tasks; they are the minimum credibility layer for a Ford-facing AI prototype.",
+  "claims_we_can_make": [
+    "KANIT turns repeated 8D/CAPA evidence issues into canonical skill-gap signals.",
+    "KANIT uses AI to read messy quality incident text, but constrains the result with a fixed skill ontology and structured outputs.",
+    "KANIT's readiness score is formula-based and auditable, not an arbitrary AI opinion.",
+    "The demo uses synthetic quality cases to show how the system would work without exposing real supplier or employee data.",
+    "KANIT is not replacing QMS, LMS, Poka, or Augmentir; it can feed those systems with evidence-based readiness signals in the future.",
+    "The current buildathon scope proves one working workflow: incident evidence to repeated skill gap to shift readiness."
+  ],
+  "claims_to_avoid": [
+    "Ford will buy this.",
+    "Ford has this exact unsolved problem and requested this solution.",
+    "KANIT guarantees scrap reduction or quality cost savings.",
+    "The readiness score is AI-certified or objectively true.",
+    "The demo can handle any real 8D file reliably without controlled ontology and validation.",
+    "COPQ exposure is a serious financial estimate without real scrap, rework, downtime, warranty, and production-volume data.",
+    "KANIT replaces Ford quality systems, QMS, LMS, Poka, Augmentir, or supplier portals."
+  ],
+  "sources": [
+    "Local source: /Users/furkan/Desktop/proje_SONN/ai-buildathon.md - local buildathon brief with 10-day plan, deliverables, demo structure, and scoring criteria.",
+    "https://gsa-stg-ecas.gsa.gov/technology/government-it-initiatives/federal-ai-hackathon/the-judging - Federal AI Hackathon judging criteria: relevance, impact, technical implementation, AI integration, feasibility, presentation.",
+    "https://www.hack4sdg.com/2025-event/judging-criteria/ - GenAI hackathon rubric: problem framing, functional prototype, appropriate GenAI use, feasibility, impact, ethics.",
+    "https://hackhq.io/planning-guide/judging - Hackathon judging guidance: technical implementation, business value, presentation clarity, scoring calibration.",
+    "https://www.upschool.io/en/ai-first-developer - UP School AI-First Developer program: AI-first coding, APIs, DevOps, AI in QA/testing, ethical AI, problem solving, communication.",
+    "https://kariyer.eskisehir.edu.tr/tr/Duyuru/Detay/estu-ford-otosan-akademide-dijital-donusum-ve-yapay-zeka-baslikli-egitim-gerceklestirildi - ESTU-Ford Otosan Academy AI session: smart factories, production optimization, predictive maintenance, AI ethics, human oversight, accountability."
+  ],
+  "uncertain": [
+    "ford_or_automotive_relevance"
+  ]
+}

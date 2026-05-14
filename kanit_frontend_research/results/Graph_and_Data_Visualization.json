@@ -1,0 +1,230 @@
+{
+  "research_item": "Graph and Data Visualization",
+  "executive_verdict": "Use React Flow as the primary evidence graph layer, Recharts for small readiness and penalty breakdown charts, and hand-authored SVG for the signature animated convergence moment. Do not make raw D3 the main UI layer for the buildathon frontend; it is powerful but slower to ship and easier to over-engineer. Use D3 only as a utility for layout/math if the graph grows beyond the deterministic demo. Avoid ECharts, Cytoscape.js, and Mermaid for the main product screen unless the scope changes: they are credible tools, but they either feel too generic for this demo or solve a larger graph-analysis/documentation problem than KANIT needs right now.",
+  "relevance_to_kanit": "KANIT's strongest frontend moment is not a generic dashboard; it is the proof that three separate quality incidents converge into the same canonical skill gap and then lower a shift readiness score through an auditable formula. React Flow maps directly to this story because incidents, root causes, evidence, employee codes, stations, teams, and canonical skills are nodes and edges. Recharts or a custom SVG score card can show the formula-based readiness score without making the interface feel like a spreadsheet. This keeps the demo understandable in three minutes: evidence enters, patterns converge, readiness changes, mentor action appears.",
+  "benchmark_repos_or_products": [
+    {
+      "name": "React Flow / xyflow",
+      "fit": "Best fit for KANIT's evidence graph because it is built for node-based UIs, custom nodes, custom edges, SVG edge styling, drag/pan/zoom, and React integration.",
+      "use_in_kanit": "Use for the Evidence Convergence Graph: incident nodes on the left, canonical skill gap node in the middle, shift/station readiness node on the right."
+    },
+    {
+      "name": "D3",
+      "fit": "Best-in-class low-level visualization toolkit, but too broad for the first frontend unless used narrowly.",
+      "use_in_kanit": "Use only for scales, layout helpers, force/hierarchy experiments, or future analytics. Do not use direct DOM-driven D3 rendering as the main React UI."
+    },
+    {
+      "name": "Recharts",
+      "fit": "Fastest pragmatic choice for simple React charts with SVG customization.",
+      "use_in_kanit": "Use for penalty bars, skill-gap counts, and readiness trend mini charts if needed."
+    },
+    {
+      "name": "visx",
+      "fit": "Strong option when a bespoke visualization system is needed and the team wants D3 math with React components.",
+      "use_in_kanit": "Potential later replacement for Recharts if the UI needs fully custom chart grammar. Not necessary for buildathon speed."
+    },
+    {
+      "name": "Apache ECharts",
+      "fit": "Very capable and widely used charting library, strong for high-volume or canvas-heavy dashboards.",
+      "use_in_kanit": "Overkill for the first demo; its default visual language can look like a generic BI dashboard unless heavily customized."
+    },
+    {
+      "name": "Cytoscape.js",
+      "fit": "Strong for graph theory, large networks, and network analysis.",
+      "use_in_kanit": "Use only if KANIT becomes a deep operational graph analysis product. It is too heavy for the current guided evidence story."
+    },
+    {
+      "name": "Mermaid",
+      "fit": "Excellent for diagrams-as-code and documentation.",
+      "use_in_kanit": "Use in docs, architecture pages, and README diagrams, not the live product experience."
+    }
+  ],
+  "github_star_evidence": {
+    "important_note": "GitHub stars are adoption signals, not proof of design quality, maintainability, accessibility, or product fit. Stars should be cross-checked with release activity, documentation, bundle impact, TypeScript support, and how well the tool matches KANIT's story.",
+    "repos": [
+      {
+        "repo": "xyflow/xyflow",
+        "evidence": "GitHub shows about 36.6k stars, about 2.4k forks, MIT license, and 372 releases; the README states the monorepo contains React Flow 12 under @xyflow/react."
+      },
+      {
+        "repo": "d3/d3",
+        "evidence": "GitHub shows roughly 113k stars and about 22.7k forks; the repository describes D3 as bringing data to life with SVG, Canvas, and HTML."
+      },
+      {
+        "repo": "recharts/recharts",
+        "evidence": "GitHub shows about 27.1k stars, about 1.9k forks, MIT license, TypeScript codebase, and recent update activity in May 2026."
+      },
+      {
+        "repo": "airbnb/visx",
+        "evidence": "GitHub shows about 20.8k stars and about 761 forks; the README positions visx as React visualization components using D3 for calculations and math."
+      },
+      {
+        "repo": "apache/echarts",
+        "evidence": "GitHub shows about 66.3k stars and about 19.8k forks; official materials emphasize many chart types, progressive rendering, and very large real-time data."
+      },
+      {
+        "repo": "cytoscape/cytoscape.js",
+        "evidence": "GitHub search results show about 10.7k stars and about 1.7k forks; the project positions itself as a graph theory library for visualization and analysis."
+      },
+      {
+        "repo": "mermaid-js/mermaid",
+        "evidence": "GitHub shows about 87.9k stars and about 8.9k forks; the project generates diagrams from markdown-like text."
+      }
+    ]
+  },
+  "premium_design_patterns": [
+    "Make the first viewport the actual product, not a marketing hero. The user should immediately see incidents converging into a skill risk and a readiness score changing.",
+    "Use a guided forensic interface: left side is incoming quality evidence, center is the canonical skill gap, right side is shift readiness and mentor action.",
+    "Use restrained industrial polish: matte off-white or cool neutral surfaces, graphite text, a small Ford-adjacent signal blue accent, amber/red risk states, and green only for verified readiness.",
+    "Use one memorable visual signature: animated evidence lines that converge from three incidents into one skill node. This is the Awwwards-level moment because it explains the product, not because it decorates the page.",
+    "Expose the scoring formula in the UI. The premium move is transparency: show `100 - evidence penalties - repeat-gap penalties - pending mentor review + completed practice bonus`, not a mysterious AI score.",
+    "Use dense but calm enterprise spacing. Avoid oversized landing-page cards, vague AI gradients, and decorative 3D that makes the product feel less serious.",
+    "Use microcopy as operational language: `3 repeated incidents`, `1 canonical gap`, `A Shift readiness at risk`, `Mentor review required`."
+  ],
+  "recommended_tools": {
+    "graph": [
+      "@xyflow/react for the main evidence graph",
+      "Custom React Flow nodes for Incident, Evidence, SkillGap, Shift, Station, and MentorAction",
+      "Custom SVG edges or React Flow custom edges for animated convergence paths"
+    ],
+    "charts": [
+      "Recharts for penalty bars, trend sparklines, and small breakdown visuals",
+      "Hand-authored SVG for the readiness score ring if the design needs exact polish",
+      "D3-scale or D3-shape only as utility packages if custom geometry is needed"
+    ],
+    "motion": [
+      "Motion / Framer Motion for card reveals, score transitions, and route-level transitions",
+      "CSS transitions for hover/focus states",
+      "SVG stroke-dasharray animation for evidence path drawing"
+    ],
+    "ui_system": [
+      "Next.js or Vite + React + TypeScript depending on the existing frontend setup",
+      "Tailwind CSS for tokenized spacing/color",
+      "shadcn/ui or Radix primitives for accessible dialogs, tabs, tooltips, and buttons",
+      "Lucide React for functional icons"
+    ],
+    "avoid_for_mvp": [
+      "Raw D3 DOM manipulation as the main React rendering layer",
+      "Three.js unless a real 3D product scene is needed",
+      "Rive/Lottie unless there is time to art-direct a meaningful asset",
+      "ECharts/Cytoscape for the first guided demo"
+    ]
+  },
+  "recommended_skills": [
+    "research-deep for evidence-gathering and tool benchmark research",
+    "superpowers:brainstorming before design decisions, because the screen strategy must be approved before implementation",
+    "ui-ux-pro-max for accessibility, interaction, responsive behavior, visual hierarchy, and animation discipline",
+    "ckm-design for tokens, visual identity, icon/SVG style, and a cohesive design system",
+    "design-review or qa after implementation to catch overlap, contrast, responsiveness, and AI-generated generic visual patterns"
+  ],
+  "animation_and_svg_strategy": {
+    "primary_animation": "Animate three evidence edges drawing toward one canonical skill node, then pulse the skill node once and update the readiness score. This directly communicates induction: repeated field evidence becomes a skill risk.",
+    "secondary_animation": "Use 150-300ms opacity/transform transitions for panel changes, loading states, and mentor action reveal. Use score count-up only once and keep it deterministic.",
+    "svg_strategy": "Use SVG paths for convergence lines, small station/shift glyphs, and the score ring. Keep iconography functional, thin-stroked, and consistent with Lucide-style geometry.",
+    "reduced_motion": "Respect prefers-reduced-motion: replace path drawing with immediate visible edges and subtle opacity changes.",
+    "what_would_be_showoff": "Animated particle backgrounds, huge 3D factory scenes, decorative blobs, and complex force-directed graph motion would dilute trust. The motion should feel like an investigation becoming clear."
+  },
+  "ux_information_architecture": {
+    "recommended_demo_flow": [
+      {
+        "screen": "Demo Launcher",
+        "purpose": "One click starts the deterministic backend demo by calling the readiness seed/analyze endpoint. It should show the business sentence first: `KANIT finds tomorrow's risky skill from yesterday's quality mistakes.`"
+      },
+      {
+        "screen": "Evidence Convergence Graph",
+        "purpose": "Show three incident nodes converging into the same canonical skill gap. This is the main visual proof that KANIT is not just summarizing one document."
+      },
+      {
+        "screen": "Shift Readiness Board",
+        "purpose": "Show the formula-based readiness score, risk level, penalties, and the exact evidence trace behind the score."
+      },
+      {
+        "screen": "Mentor Action",
+        "purpose": "Show the generated micro-practice, approval state, and next best action. Keep this compact so the demo does not turn into an LMS product."
+      }
+    ],
+    "navigation": "Use a single-page guided product surface rather than a multi-page dashboard. A top progress rail with four steps is enough.",
+    "mobile_behavior": "On mobile, stack the same story vertically: incidents, convergence summary, readiness score, mentor action. The graph should become a simplified SVG or horizontally scroll-safe mini graph."
+  },
+  "accessibility_performance_rules": [
+    "Do not communicate risk by color alone; pair color with labels such as High Risk, Needs Mentor Review, and Evidence Missing.",
+    "Maintain at least WCAG AA contrast for text and controls; avoid pale gray text on light surfaces.",
+    "All buttons, graph nodes used as controls, tabs, and tooltips must be keyboard reachable and have visible focus states.",
+    "Use stable dimensions for graph containers, score rings, cards, and skeleton states to avoid layout shift during demo loading.",
+    "Memoize React Flow custom nodes and edges, define nodeTypes and edgeTypes outside the render path, and avoid reading the full nodes/edges arrays in every child component.",
+    "Keep the first graph small: 3-5 incident nodes, 1-2 skill nodes, 1 shift node, and 1 mentor action node. This makes the story readable and reduces rendering risk.",
+    "Prefer SVG and CSS transform/opacity animations. Avoid layout-triggering animations and heavy canvas unless the graph becomes large.",
+    "Add reduced-motion fallbacks for every animated path and score transition.",
+    "Use deterministic loading states so the frontend never looks like a random AI demo waiting on opaque backend work."
+  ],
+  "implementation_implications": {
+    "backend_mapping": [
+      {
+        "backend_data": "POST /demo/seed-readiness",
+        "frontend_use": "Populate the guided demo, convergence proof, incidents, canonical skill gaps, readiness score, and evidence trace."
+      },
+      {
+        "backend_data": "GET /skills/ontology",
+        "frontend_use": "Render canonical skill labels and definitions so the graph uses stable names instead of raw LLM phrases."
+      },
+      {
+        "backend_data": "POST /shifts/readiness",
+        "frontend_use": "Support a real shift/station readiness board after the demo seed flow."
+      },
+      {
+        "backend_data": "GET /exports/readiness/{readiness_id}",
+        "frontend_use": "Optional export button after the main story, not a main demo scene."
+      }
+    ],
+    "component_plan": [
+      "EvidenceGraph.tsx using @xyflow/react",
+      "IncidentNode.tsx, SkillGapNode.tsx, ShiftReadinessNode.tsx, MentorActionNode.tsx",
+      "ConvergenceEdge.tsx for animated SVG paths",
+      "ReadinessFormulaCard.tsx showing exact score breakdown",
+      "PenaltyBreakdownChart.tsx using Recharts or hand-authored SVG",
+      "DemoStepper.tsx for the four-stage story"
+    ],
+    "data_contract": "Transform backend incident/skill/readiness JSON into a small graph view model: nodes, edges, scoreBreakdown, evidenceTrace, and mentorActions. Keep this adapter pure and testable.",
+    "quality_bar": "The frontend must prove the backend is deterministic: canonical skill IDs, formula version, evidence trace, and score breakdown should be visible in the UI."
+  },
+  "what_to_avoid": [
+    "Avoid a generic dark AI dashboard with glowing gradients and vague cards; it will look like template work.",
+    "Avoid overusing 3D, particle backgrounds, or abstract factory illustrations. They do not help Ford understand the product.",
+    "Avoid showing COPQ as the main visual unless connected to real cost data. A simple multiplication proxy can look weak.",
+    "Avoid a giant force-directed graph. KANIT's story is convergence, not network exploration.",
+    "Avoid making the graph editable like a workflow builder. The product is analyzing evidence, not asking the user to draw nodes.",
+    "Avoid hiding the readiness formula. Ford engineers will distrust an unexplained AI score.",
+    "Avoid Mermaid in the app UI; it reads as documentation, not a premium product interface.",
+    "Avoid raw LLM labels in the graph. Always display canonical ontology labels and show raw phrases only as supporting evidence."
+  ],
+  "demo_story_implications": {
+    "opening_sentence": "KANIT finds tomorrow's risky skill from yesterday's quality mistakes.",
+    "technical_sentence": "Unlike ChatGPT, KANIT normalizes messy incident language into a fixed skill ontology, finds repeated evidence patterns, and calculates readiness with an auditable formula.",
+    "best_3_minute_sequence": [
+      "Start with three closed 8D/CAPA incidents.",
+      "Show the graph drawing three paths into the same canonical skill gap: effectiveness verification.",
+      "Show the shift readiness score dropping with visible penalties and formula version.",
+      "Show the mentor action that turns the risk into a small, reviewable practice task."
+    ],
+    "visual_peak": "The evidence graph convergence is the single most important visual moment. It should be art-directed, fast, deterministic, and impossible to confuse with a generic chatbot output.",
+    "jury_defense": "If asked why not just ChatGPT, point at the stable ontology ID, repeated-gap proof, formula-based readiness, and evidence trace."
+  },
+  "sources": [
+    "https://github.com/xyflow/xyflow",
+    "https://reactflow.dev/learn/concepts/terms-and-definitions",
+    "https://reactflow.dev/learn/customization/custom-nodes",
+    "https://reactflow.dev/learn/advanced-use/performance",
+    "https://github.com/d3/d3",
+    "https://github.com/recharts/recharts",
+    "https://recharts.github.io/en-US/guide/customize/",
+    "https://github.com/airbnb/visx",
+    "https://github.com/apache/echarts",
+    "https://echarts.apache.org/",
+    "https://github.com/cytoscape/cytoscape.js",
+    "https://js.cytoscape.org/",
+    "https://github.com/mermaid-js/mermaid",
+    "https://observablehq.github.io/plot/",
+    "https://observablehq.github.io/oss-analytics/"
+  ],
+  "uncertain": []
+}

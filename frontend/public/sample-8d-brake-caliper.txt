@@ -1,0 +1,94 @@
+8D PROBLEM SOLVING REPORT
+=========================================
+Company:     ABC Otomotiv Tedarik A.Ş.
+Customer:    XYZ Motor Üretim Ltd.
+Part Number: 4820-XZ-001
+Part Name:   Fren Kaliper Braketi
+Date:        2024-03-15
+8D Number:   8D-2024-031
+=========================================
+
+D1 — TEAM / EKİP
+-----------------
+Quality Engineer:  M. Koç       (ekip lideri)
+Process Engineer:  K. Demir
+Supplier Quality:  T. Yılmaz
+Production Lead:   A. Çelik
+Measurement Tech:  B. Arslan
+
+D2 — PROBLEM STATEMENT / PROBLEM TANIMI
+-----------------------------------------
+Müşteri şikayeti: Fren kaliper braketi, montaj deliği merkez mesafesinde
+boyutsal sapma sergiledi. Ölçüm: +0.82 mm sapma (nominal: 45.00 mm ± 0.20 mm
+tolerans). Gelen muayenede tespit edildi.
+
+Etkilenen parti: LT240301
+Miktar: 240 adet (müşteri deposunda), 450 adet (tedarikçi stoğunda)
+Cpk ölçümü: 0.68 (hedef: ≥ 1.33)
+Tespit yeri: Müşteri gelen muayene hattı, İstasyon 7
+
+D3 — CONTAINMENT ACTION / GEÇİCİ ÖNLEM
+-----------------------------------------
+1. Şüpheli parti (240 adet) müşteri deposunda karantinaya alındı. (15.03.2024)
+2. Tedarikçi stoğunda kalan 450 adet %100 yeniden muayene edildi. (16.03.2024)
+3. Kırmızı etiket yapıştırıldı ve ayrı depolama alanına alındı.
+4. Müşteri üretim hattı, ek kaynak istasyonu ile koruma altına alındı.
+5. Yeni sevkiyatlar durduruldu, serbest bırakma yetkisi kalite mühendisine bağlandı.
+
+Muhafaza etkinliği doğrulandı: 16.03.2024 — M. Koç imzası.
+
+D4 — ROOT CAUSE / KÖK NEDEN (5 WHY)
+--------------------------------------
+Neden 1: Delik merkez mesafesi tolerans dışı.
+Neden 2: Delme fikstürü aşınmış, nominal konumunu kaybetmiş.
+Neden 3: Fikstür PM (önleyici bakım) programına uyulmadı.
+Neden 4: PM kontrol listesi, üretim emri sistemine bağlı değil.
+Neden 5: PM gecikmesinde otomatik üretim durdurma mekanizması yok.
+
+Kök neden: Önleyici bakım sistemi, PM tarihi geçildiğinde üretimi otomatik
+olarak durduracak bir tetikleyiciden yoksun. Fikstür PM durumu ERP'de izlenmiyor.
+
+D5 — CORRECTIVE ACTION / DÜZELTİCİ AKSİYON
+---------------------------------------------
+1. Delme fikstürü değiştirildi ve ölçüm geçerlilik testi yapıldı.
+   Tamamlandı: 18.03.2024 — Cpk = 1.67 (kabul kriteri: ≥ 1.33).
+2. ERP üretim emri serbest bırakma akışına fikstür PM durumu entegre edildi.
+   PM vadesi geçmişse sistem otomatik olarak üretim emrini durdurur.
+3. Lot serbest bırakma öncesi zorunlu Cpk kontrolü (≥ 1.33) eklendi.
+4. Kontrol planı CP-4820-001 Revizyon C güncellendi.
+   Güncelleme tarihi: 20.03.2024.
+
+D6 — IMPLEMENTATION & VERIFICATION / UYGULAMA VE DOĞRULAMA
+-------------------------------------------------------------
+Yeni fikstür 18.03.2024 tarihinde kuruldu ve onaylandı (Cpk = 1.67).
+ERP entegrasyonu canlıya alındı: 01.04.2024.
+Düzeltme sonrası ilk 3 üretim partisi ölçüldü:
+  - Parti A: Cpk = 1.61
+  - Parti B: Cpk = 1.58
+  - Parti C: Cpk = 1.64
+Ortalama Cpk: 1.61 — hedef karşılandı.
+
+Etkinlik doğrulaması / Effectiveness check:
+30 günlük takip raporu planlandı: 15.04.2024.
+Müşteri audit: bekleniyor.
+
+D7 — PREVENTIVE ACTION / ÖNLEYİCİ AKSİYON
+--------------------------------------------
+1. PM–ERP entegrasyonu tüm CNC delme operasyonlarına yaygınlaştırıldı (5 makine).
+   Sorumlu: K. Demir — Termin: 30.04.2024.
+2. Tedarikçi audit kontrol listesi, PM sistemi doğrulama adımı içerecek şekilde revize edildi.
+   Sorumlu: T. Yılmaz — Termin: 15.04.2024.
+3. Çıkan dersler (lessons learned) kardeş fabrikalara paylaşıldı.
+   Sorumlu: M. Koç — Termin: 10.04.2024.
+
+D8 — TEAM RECOGNITION / EKİP TANIMA
+--------------------------------------
+Düzeltici aksiyon kapatıldı: 05.04.2024
+Müşteri onayı alındı:        08.04.2024
+Ekip teşekkür yazısı:        M. Koç, K. Demir, T. Yılmaz, A. Çelik, B. Arslan
+
+=========================================
+Owner / Sorumlu: M. Koç (Kalite Mühendisi)
+Due date / Termin: 08.04.2024
+Status: KAPALI
+=========================================

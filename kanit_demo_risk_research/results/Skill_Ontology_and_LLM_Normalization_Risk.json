@@ -1,0 +1,83 @@
+{
+  "research_item": "Skill Ontology and LLM Normalization Risk",
+  "executive_verdict": "The critique is valid and should be treated as a P0 reliability risk for KANIT's demo and backend. If the system lets an LLM create free-form skill labels, semantically identical gaps such as 'effectiveness verification', 'corrective action follow-up', and 'etkinlik kontrolu eksik' can fragment into separate nodes, causing pattern mining, evidence graphs, and readiness scoring to fail. The strongest buildathon version should therefore use a fixed, human-reviewed skill ontology with canonical IDs, multilingual synonyms, schema-constrained outputs, deterministic normalization, and transparent formula-based scoring. This is not a downgrade from AI; it is the enterprise-grade way to make AI usable inside manufacturing quality workflows.",
+  "critique_validity": "Valid. The critique correctly identifies that free-form LLM labels are not reliable identifiers for downstream analytics. Enterprise vocabularies and knowledge organization systems separate stable concept IDs from human-readable labels and synonyms. OpenAI and NVIDIA both document structured output or guided generation because valid free-form text or even valid JSON is not enough for reliable pipelines. Manufacturing quality systems already rely on standardized methods, structured evidence, common terminology, and auditable records, so a Ford or automotive jury would expect KANIT to use controlled skill IDs and explainable formulas rather than arbitrary AI-generated labels or opaque readiness scores.",
+  "evidence_from_sources": [
+    "OpenAI states that JSON mode improves valid JSON reliability but does not guarantee conformance to a particular schema; Structured Outputs were introduced to make model outputs match developer-supplied JSON Schemas. This supports the critique that prompting alone is insufficient for reliable backend data contracts.",
+    "NVIDIA NIM documentation states that LLM outputs can be constrained using JSON Schema, regular expressions, grammars, or particular choices, and recommends guided_json for performance and reliability in larger pipelines. This is directly relevant because KANIT currently uses the NVIDIA API and can adopt guided choices or schema constraints for skill IDs.",
+    "W3C SKOS defines concepts as entities that can be identified by URIs, assigned preferred labels and alternative labels, and linked into concept schemes. This supports the design pattern KANIT needs: one canonical skill concept with many Turkish/English labels and synonyms.",
+    "The Cross Domain Interoperability Framework explains that controlled vocabularies need globally unique, resolvable identifiers so machines can detect when the same concept is used in different datasets. This precisely matches the risk in KANIT's pattern mining layer.",
+    "ESCO, developed by the European Commission, is a multilingual skills, competences, qualifications, and occupations classification that provides a common language across employment and education. This validates the broader idea that skill intelligence systems should not depend on ad hoc labels.",
+    "The U.S. Department of Labor's O*NET provides occupational reports, skills, datasets, web services, and resources for connecting other systems to the O*NET-SOC taxonomy. This shows that serious workforce systems use standardized taxonomies and integration-ready identifiers.",
+    "AIAG describes Automotive Quality Core Tools as common quality methods and tools developed with U.S. automotive manufacturers and adopted across sectors. This supports the expectation that automotive quality analytics should use controlled, auditable structures rather than arbitrary language outputs.",
+    "CEN CWA 17918:2022 on Zero Defects Manufacturing states that common terminology is a foundation for ontologies and human-machine interaction in industrial settings, and that ZDM terminology connects to quality management, Industry 4.0, and standards such as ISO 9000 and IATF 16949.",
+    "NIST's Generative AI Profile identifies risks from factually inaccurate or internally inconsistent outputs, especially in domains requiring contextual or domain expertise, and warns that confabulated logic can mislead users into over-trusting AI outputs."
+  ],
+  "ford_or_automotive_relevance": "This issue matters strongly for Ford, Ford Otosan, and automotive suppliers because automotive quality culture is evidence-based, standardized, and audit-oriented. APQP, PPAP, FMEA, Control Plan, MSA, SPC, 8D, CAPA, Q1, SIM, and IATF-related processes depend on consistent terms, traceability, and objective evidence. If KANIT claims that repeated incidents reveal a recurring skill gap, the skill gap must be a stable canonical node, not a different free-text phrase on each run. A Ford-quality audience will likely accept 'skill_id=effectiveness_verification, triggered by three incidents and two missing verification evidences' more readily than 'the AI thinks the team is weak at follow-up.'",
+  "technical_implication": "KANIT must add a fixed skill ontology layer before pattern mining and readiness scoring. Each skill should have a stable skill_id, Turkish label, English label, definition, allowed issue codes, synonym list, linked incident types, severity weight, required evidence types, and mentor approval criteria. The LLM should be forced to choose from allowed skill IDs using enum/schema-constrained output, not allowed to invent labels. A normalization service should map any free-text evidence issue to a canonical skill_id through deterministic dictionaries first, then schema-constrained LLM classification only when needed, then reject or route low-confidence cases to human review. Readiness score must be rule-based and decomposed into visible penalties rather than generated by the LLM.",
+  "demo_implication": "The 3-minute demo should be changed to prove reliability instead of showing many features. The demo should use three intentionally designed sample 8D/CAPA incidents where the language varies but the canonical outcome is the same: skill_id=effectiveness_verification. The Evidence Graph should visibly show three incident nodes converging into one canonical skill node with aliases such as 'effectiveness verification', 'etkinlik kontrolu', and 'corrective action follow-up' displayed as synonyms. The Shift Readiness screen should show a formula decomposition such as 50 = 100 - 30 for two missing evidence items - 20 for repeated canonical gap, rather than a mysterious AI score. The COPQ proxy and export timeline should be removed from the live demo or pushed to backup slides because they distract from the core proof.",
+  "buildathon_implication": "This improves all three likely buildathon scoring dimensions. For problem meaningfulness, it shows a real manufacturing problem: closed quality reports do not automatically become operational learning signals. For AI integration, it shows mature AI use: LLM for extraction and interpretation, deterministic ontology for reliability, formula-based scoring for auditability, and human review for trust. For working prototype, it reduces demo risk because canonical IDs and deterministic sample cases make the pattern-mining behavior repeatable. A jury is more likely to believe a narrow reliable system than a broad system that depends on opaque AI labels.",
+  "recommended_decision": "Modify immediately. Keep the Quality-to-Readiness positioning, keep the Evidence Graph and Shift Readiness Board, but add a controlled skill ontology and make it the center of the demo. Remove COPQ from the main demo unless real production cost data is available. Defer generic export timeline to documentation or a final 'future integration' sentence. Make the core promise narrower: KANIT detects repeated canonical skill gaps from quality incidents and converts them into auditable pre-shift readiness actions.",
+  "implementation_priority": "P0. This must be implemented before frontend polish because it protects the central technical claim. Without canonical skill IDs, pattern mining can fragment and the demo can collapse. The minimum P0 implementation is: 15-20 fixed skill IDs, bilingual labels, synonym mapping, allowed_issue_codes, schema/enum-constrained LLM output, deterministic fallback normalization, confidence threshold, human-review route for unknown labels, and formula-based readiness score breakdown. P1 is ontology versioning and admin review. P2 is mapping to external taxonomies such as ESCO, O*NET, Poka, Augmentir, LMS, or QMS schemas.",
+  "claims_we_can_make": [
+    "KANIT does not let the LLM invent skill labels; it maps evidence to a controlled skill ontology.",
+    "Different phrases in Turkish or English can converge to the same canonical skill ID.",
+    "The readiness score is rule-based and auditable, while AI is used for extraction, summarization, and evidence interpretation.",
+    "The demo proves the core loop: three incidents, one repeated canonical skill gap, one pre-shift readiness risk, and one mentor-approved learning action.",
+    "KANIT is designed to complement QMS, LMS, Poka, and Augmentir-style systems by sending reliable skill signals rather than replacing them."
+  ],
+  "claims_to_avoid": [
+    "Avoid saying the LLM can reliably discover new skill labels without review.",
+    "Avoid saying the readiness score is objectively true without calibration against plant outcomes.",
+    "Avoid saying COPQ or scrap savings are calculated accurately unless real cost, scrap, rework, downtime, and production data are connected.",
+    "Avoid saying Ford would buy the product without pilot validation.",
+    "Avoid saying KANIT is Ford-approved, IATF-compliant by itself, or capable of certifying employee readiness."
+  ],
+  "sources": [
+    {
+      "url": "https://openai.com/index/introducing-structured-outputs-in-the-api/",
+      "note": "OpenAI explains why JSON mode is insufficient for schema adherence and why Structured Outputs constrain model outputs to developer-supplied schemas."
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs",
+      "note": "OpenAI documentation recommends Structured Outputs over JSON mode when schema adherence is needed."
+    },
+    {
+      "url": "https://docs.nvidia.com/nim/large-language-models/1.15.0/structured-generation.html",
+      "note": "NVIDIA NIM documents guided_json, guided_choice, regex, and grammar constraints for reliable structured generation in pipelines."
+    },
+    {
+      "url": "https://www.w3.org/TR/skos-reference/",
+      "note": "W3C SKOS defines controlled vocabulary concepts with identifiers, preferred labels, alternative labels, notes, relations, and mappings."
+    },
+    {
+      "url": "https://cross-domain-interoperability-framework.github.io/cdifbook/controlled_vocabularies/vocabintro.html",
+      "note": "CDIF explains why controlled vocabulary terms need globally unique identifiers so machines can detect the same concept across datasets."
+    },
+    {
+      "url": "https://esco.ec.europa.eu/en",
+      "note": "ESCO is the European Commission's multilingual classification of skills, competences, qualifications, and occupations, offering a common language for education and employment."
+    },
+    {
+      "url": "https://interoperable-europe.ec.europa.eu/collection/labour-market-interoperability/about-esco-european-classification-skills-competences-qualifications-and-occupations-esco",
+      "note": "Interoperable Europe describes ESCO governance, multilingual concepts, skills hierarchy, stakeholder maintenance, and practical use in skill profiles and curriculum planning."
+    },
+    {
+      "url": "https://www.dol.gov/agencies/eta/onet?lang=en",
+      "note": "The U.S. Department of Labor describes O*NET resources, datasets, web services, and connections to the O*NET-SOC taxonomy."
+    },
+    {
+      "url": "https://www.aiag.org/expertise-areas/quality/quality-core-tools",
+      "note": "AIAG describes automotive quality core tools as common methods developed with U.S. automotive manufacturers and adopted across sectors."
+    },
+    {
+      "url": "https://standards.iteh.ai/catalog/standards/cen/6c039ea2-9a0c-4cb7-9a10-c9853dcb7fab/cwa-17918-2022",
+      "note": "CEN CWA 17918:2022 defines Zero Defects Manufacturing vocabulary and states that common terminology supports ontologies and human-machine interaction in industrial settings."
+    },
+    {
+      "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+      "note": "NIST Generative AI Profile identifies risks from inaccurate or internally inconsistent outputs and confabulated logic in consequential domains."
+    }
+  ],
+  "uncertain": []
+}

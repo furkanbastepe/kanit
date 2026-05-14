@@ -1,0 +1,19 @@
+# Sentetik Vaka 03: Onaya Hazır 8D/CAPA
+
+Problem: Ön konsol klipsinde montaj sonrası gevşeme şikayeti geldi; problem belirli lot ve vardiyada yoğunlaştı.
+
+Containment: Şüpheli lot karantinaya alındı, sevk öncesi %100 fonksiyon kontrolü başlatıldı, müşteriye kontrollü stok bilgisi iletildi.
+
+Kök neden: 5 Why analizine göre tork tabancası kalibrasyon periyodu kaçırıldığı için klips oturma kuvveti proses limitinin altına düştü.
+
+Düzeltici aksiyon: Tork tabancası kalibre edildi, Poka-Yoke uyarısı eklendi ve operatör iş talimatı güncellendi.
+
+Önleyici aksiyon: Kalibrasyon son tarihleri bakım panosuna ve vardiya lideri kontrol listesine eklendi.
+
+Etkinlik doğrulama: 2026-05-10 ile 2026-05-12 arasında 300 parça kontrol edildi; uygunsuzluk tekrar etmedi.
+
+Sorumlu: Kalite Lideri Elif
+
+Termin: 2026-05-12
+
+Not: Bu vaka demo için güçlü dosya örneğidir; yine de insan onayı olmadan müşteriye gönderilmemelidir.

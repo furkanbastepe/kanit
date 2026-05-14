@@ -1,0 +1,17 @@
+# Sentetik Vaka 02: Çelişkili Kanıtlı 8D/CAPA
+
+Problem: Kapı bağlantı sacında çizik ve yüzey kusuru müşteri giriş kontrolünde yakalandı.
+
+Containment: Aynı lotta bulunan 80 parça bloke edildi, sağlam parçalar yeşil etiketle ayrıldı.
+
+Kök neden: 5 Why çalışmasına göre taşıma fikstüründeki aşınmış temas yüzeyi parçayı çiziyor.
+
+Düzeltici aksiyon: Fikstür temas yüzeyi değiştirildi ve vardiya başı kontrol listesine fikstür yüzey kontrolü eklendi.
+
+Etkinlik doğrulama: Bir sonraki 3 vardiyada 0/240 çizik gözlendi.
+
+Sorumlu: Proses Kalite Uzmanı Mert
+
+Termin: 2026-05-20
+
+Not: Dosya metni iyi görünür; fakat yüklenen düzeltici aksiyon fotoğrafı ilgisiz/izlenebilirliği zayıf olacak şekilde demo edilmelidir.

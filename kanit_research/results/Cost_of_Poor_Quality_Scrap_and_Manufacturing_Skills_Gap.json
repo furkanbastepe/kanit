@@ -1,0 +1,121 @@
+{
+  "research_item": "Cost of Poor Quality Scrap and Manufacturing Skills Gap",
+  "executive_verdict": "Reducing recurring manufacturing quality errors through targeted learning is a real paid problem, but KANIT should not pitch it as a generic LMS or a generic quality dashboard. The strongest Ford/buildathon story is: manufacturers already spend heavily on scrap, rework, warranty, nonconformance, supplier quality, and training; the missing layer is evidence-based skill intelligence that turns repeated 8D/CAPA weaknesses into role-specific learning tasks and mentor-verified readiness. The opportunity is credible because ASQ frames scrap and rework as internal failure costs, NIST MEP reports training/lean programs producing measurable savings, Manufacturing Institute/Deloitte report a large manufacturing skills gap, and vendors such as Dozuki, Augmentir, Octave/ETQ, and QMS platforms already sell adjacent solutions. The caution is that direct proof that Ford or Ford Otosan will buy a standalone incident-to-skill product is not yet established [uncertain].",
+  "relevance_to_kanit": "This research strengthens KANIT. KANIT's wedge maps tightly to three existing budget lines: quality cost reduction, workforce readiness, and audit-ready training evidence. ASQ explicitly includes scrap, rework, failure analysis, warranty claims, complaints, and returns inside quality failure costs, while NIST MEP describes workforce training and Training Within Industry as ways to reduce ramp time, scrap, and rework. KANIT can therefore position itself as a backend evidence layer for QMS, connected-worker, LMS, and supplier-development teams: it does not replace Dozuki, Augmentir, Poka, ETQ, or Ford quality portals; it enriches them by detecting which recurring quality failures reveal missing skills.",
+  "problem_evidence": [
+    "ASQ defines cost of quality as a method for determining how resources are used for prevention, appraisal, and failures, and lists scrap, rework, waste, failure analysis, warranty claims, complaints, and returns as failure-cost categories.",
+    "ASQ's 2025 Cost of Quality discussion says only 31% of respondents fully understand the impact of quality costs on financial performance, indicating that many organizations still lack a clear cost-to-action loop.",
+    "The Manufacturing Institute and Deloitte reported that U.S. manufacturing may need up to 3.8 million additional employees from 2024 to 2033, with 1.9 million positions potentially unfilled, and 65% of respondents naming attraction and retention as their primary business challenge.",
+    "NIST MEP states that many MEP centers offer Training Within Industry for production supervisors and team leaders; companies implementing TWI have seen time-to-productivity cut in half along with reductions in scrap and rework.",
+    "A NIST MEP Amphenol Aerospace case tied Lean Green Belt training and detailed work instructions to a scrap-reduction project: one marking-station project documented $60,000 in savings and eight Green Belt projects produced $932,000 total cost savings.",
+    "A NIST MEP Woodside Industries case described attrition and new hires weakening lean practices, increasing waste, rework, scrap, cost, and capacity pressure; a 15-employee lean training effort was associated with $1.5 million throughput increase and $12,600 training investment.",
+    "A NIST MEP quality-system case for Abby Manufacturing identified training modules including non-conformance reporting, 8D problem-solving, supplier quality, APQP/PPAP, process controls, and gauge calibration, producing reported cost savings and new investment."
+  ],
+  "ford_specific_evidence": [
+    "Ford's Supplier Quality portal exposes Quality Issue Management (QIM), Q1 Requirements, Supplier Improvement Metric (SIM), 8D submission/search links, online quality training, training modules, and Manufacturing Site Assessment, showing that supplier quality evidence and training are formalized workflows.",
+    "Ford's 2025 10-K disclosure reports estimated future warranty and field service action cost obligations rising from $14.032 billion at December 31, 2024 to $17.190 billion at December 31, 2025, with $5.733 billion in payments during 2025. This is not scrap/rework, but it demonstrates that quality failures have board-level financial weight.",
+    "Ford Otosan's Kocaeli plants are described as Europe's largest commercial vehicle manufacturing hub, with 612,000 units annual capacity by end-2025, and Golcuk/Yenikoy are WEF Global Lighthouse facilities. At that scale, even small recurring process or evidence errors can matter operationally.",
+    "Ford Otosan's employee page states a development-oriented HR approach and that all employees, contractors, and related parties receive OHS training according to rules; this supports learning infrastructure, though not direct proof of a quality-incident-to-training buying motion [uncertain].",
+    "No public Ford Otosan source found during this research quantified scrap/rework cost, recurring 8D evidence failures, or budget for an incident-to-skill tool [uncertain]."
+  ],
+  "buyer_personas": [
+    "Economic buyer: plant manager, operations director, quality director, supplier quality director, or manufacturing excellence leader who owns scrap/rework, warranty spillover, customer complaints, audit readiness, and productivity KPIs.",
+    "Functional buyer: quality manager, supplier quality manager, continuous improvement leader, training/L&D manager, HR workforce-readiness manager, or Ford/Ford Otosan supplier-development owner who needs evidence that training is tied to real operational failures.",
+    "Daily users: quality engineers, supplier quality engineers, 8D/CAPA owners, production supervisors, mentors, line leaders, CI/lean practitioners, and training coordinators.",
+    "Blockers: IT/security, union or works council representatives, data privacy teams, QMS owners, LMS owners, frontline supervisors worried about blame, and quality leaders who fear AI-generated conclusions without auditability.",
+    "Turkey/Ford-specific buyer path is inferred from public workflows and KANIT's positioning, not validated through interviews [uncertain]."
+  ],
+  "willingness_to_pay_evidence": [
+    "QMS is a large paid software category: Grand View Research estimates the global quality management software market at USD 12.26 billion in 2025, projected to USD 28.82 billion by 2033, with solution segments including nonconformance/CAPA, employee training, quality inspections, audit management, and supplier quality management.",
+    "Dozuki sells a connected-worker platform with pricing/demo flow and claims quality outcomes including 82% less scrap and rework, 30% fewer nonconformities, and 96% fewer customer complaints; these are vendor-reported, but they show budgeted demand for training/work-instruction/quality execution systems.",
+    "Augmentir sells AI-powered connected-worker skills and training workflows; one HVAC manufacturing case reported insufficient LMS skills tracking, a need for accurate skills matrices and targeted training, 72% reduction in new-hire onboarding time, and a manufacturing director citing huge cost savings.",
+    "Octave/ETQ sells manufacturing QMS capabilities, including IATF 16949-relevant automotive positioning, supplier quality, nonconformance, CAPA, document control, audit management, and training management modules.",
+    "NIST MEP cases demonstrate willingness to fund training and consulting interventions when tied to savings: Woodside invested $12,600 in lean training; Amphenol continued Lean Green Belt and leadership development after documented savings.",
+    "Exact SaaS willingness to pay for a standalone KANIT product is not proven; the strongest near-term paid offer is likely a service-led pilot or add-on to existing QMS/LMS/connected-worker budgets [uncertain]."
+  ],
+  "competitor_landscape": [
+    "QMS competitors/substitutes: ETQ/Octave Reliance, MasterControl, MetricStream, Ideagen, Intelex, AssurX, Arena/Plex/Rockwell, Oracle/SAP/Microsoft ecosystems, and internal SharePoint/Excel/CAPA trackers. They manage documents, nonconformances, CAPA, audits, supplier quality, and training records.",
+    "Connected-worker and frontline training competitors/substitutes: Dozuki, Augmentir, Poka, SwipeGuide, L2L, Tulip, Redzone, and digital work-instruction tools. They deliver SOPs, work instructions, skills matrices, onboarding, checklists, audits, and frontline collaboration.",
+    "Automotive quality substitutes: Ford supplier portals, QIM, Q1/SIM workflows, AIAG Core Tools training, IATF 16949 consultants, 8D/CAPA software, APQP/PPAP templates, supplier-development teams, and lean/Six Sigma consultants.",
+    "Generic AI substitute: ChatGPT or internal copilots can summarize 8D/CAPA cases, but they lack structured evidence mapping, audit trail, mentor approval, role/team skill profiles, and recurring pattern mining unless the customer builds that workflow.",
+    "KANIT's likely defensible position is not system-of-record QMS or full LMS; it is a quality-event intelligence layer that converts recurring evidence failures into verified skill signals."
+  ],
+  "market_gap": "The unserved wedge is the closed loop between quality incidents and workforce learning. QMS tools know that a nonconformance, 8D, CAPA, supplier issue, or audit finding occurred. LMS/connected-worker tools know who took a course or has a skills matrix entry. Few public products clearly claim to infer a missing skill from repeated evidence failures, generate a micro-training delta, require mentor-reviewed proof, and feed the result back to quality and training systems. This gap is credible, but the breadth of the gap inside Ford/Ford Otosan specifically is not proven without customer discovery [uncertain].",
+  "product_implications": [
+    "Add a COPQ-impact model that lets a user attach estimated scrap, rework, warranty, inspection, downtime, or customer complaint cost to a recurring skill gap without pretending to calculate full COPQ automatically.",
+    "Map each checklist issue to a skill, business impact type, affected process, likely recurrence risk, and suggested verification evidence.",
+    "Support trend mining by station, line, shift, supplier, part family, role, team, and employee pseudonym so KANIT can show recurring patterns instead of one-off coaching.",
+    "Generate training deltas rather than full courses: missing SOP section, micro-scenario, quality check prompt, mentor observation checklist, and evidence required to mark readiness.",
+    "Integrate with existing systems through exports/webhooks: QMS/CAPA ID, LMS course ID, connected-worker work-instruction link, supplier code, team code, and approval status.",
+    "Provide audit-grade traceability: source incident, source evidence, rule triggered, AI summary, human approval, readiness change, and versioned skill taxonomy.",
+    "Make privacy and blame controls first-class: pseudonym-first profiles, team-level aggregation, human approval, and language that frames gaps as system/training signals rather than worker fault."
+  ],
+  "technical_depth_opportunities": [
+    "Incident-to-skill knowledge graph: nodes for incidents, evidence artifacts, defect types, 8D/CAPA sections, skills, roles, suppliers, teams, training deltas, mentor reviews, and COPQ estimates.",
+    "Explainable rule-plus-LLM pipeline: deterministic quality checklist gates for auditability, LLM extraction for narrative/evidence summarization, and strict confidence labels for unsupported inferences.",
+    "Recurring pattern miner: detect repeated missing root cause, missing containment evidence, weak corrective action proof, missing effectiveness verification, poor photo evidence, or supplier response gaps across time.",
+    "Risk scoring model: combine frequency, severity proxy, cost proxy, recurrence, evidence score, and customer/supplier criticality into a learning-priority score.",
+    "Human-in-the-loop approval: mentor or quality owner must approve readiness changes and can accept/reject suggested training deltas.",
+    "Integration-ready backend: REST/webhook contracts for QMS/LMS/connected-worker tools, immutable audit log, and exportable JSON for buildathon demos.",
+    "Data-sparse design: support synthetic cases and pseudonymous real cases; do not require real Ford data to demonstrate the architecture."
+  ],
+  "claims_we_can_make": [
+    "Manufacturing quality failures have measurable cost categories including scrap, rework, failure analysis, warranty claims, complaints, and returns.",
+    "Workforce skills and training are a strategic manufacturing issue: public Manufacturing Institute/Deloitte data projects a major labor and skills gap through 2033.",
+    "Training and lean programs can reduce scrap/rework and produce measurable savings in real manufacturers, based on NIST MEP case evidence.",
+    "There is proven spend in adjacent software categories: QMS, connected-worker platforms, digital work instructions, skills matrices, CAPA, supplier quality, and training management.",
+    "KANIT can credibly demo an evidence-to-skill loop: analyze an 8D/CAPA case, identify weak evidence, map it to a skill gap, create a micro-learning task, and require mentor approval.",
+    "KANIT is best positioned as an intelligence add-on for QMS/LMS/connected-worker systems, not as a replacement."
+  ],
+  "claims_to_avoid": [
+    "Do not claim that KANIT will reduce scrap or rework by a specific percentage until a pilot measures baseline and post-intervention results.",
+    "Do not claim Ford or Ford Otosan has confirmed willingness to pay; public evidence supports relevance, not purchase intent.",
+    "Do not claim to calculate full COPQ automatically from incomplete incident text; instead, support user-provided or finance-validated cost estimates.",
+    "Do not claim AI alone can certify worker readiness, close CAPA, or satisfy IATF/Ford requirements without human quality-owner approval.",
+    "Do not imply worker blame. Frame recurring errors as evidence of system, process, supervision, documentation, or training gaps.",
+    "Do not compete head-on with enterprise QMS/LMS suites in the pitch; use them as integration partners and incumbents to enrich."
+  ],
+  "pivot_options": [
+    "Supplier readiness cockpit: help Tier 1/Tier 2/Tier 3 suppliers convert customer quality findings into APQP/PPAP/8D/CAPA skill and evidence improvements.",
+    "Scrap-risk learning engine: connect scrap/rework reason codes to role-specific micro-training and supervisor verification, starting with one station or process.",
+    "Shift readiness and cross-training matrix: infer readiness risks from repeated quality/process errors and compare them to staffing/skills coverage.",
+    "Connected-worker add-on: sell KANIT as an analytics layer for Dozuki, Augmentir, Poka, L2L, Tulip, or internal work-instruction systems.",
+    "Safety incident-to-skill pivot: use the same evidence-to-skill pattern for near misses, unsafe acts, missing permit steps, or OHS training gaps.",
+    "Maintenance reliability pivot: map repeated equipment misuse, missed PM evidence, or setup mistakes to technician training and mentor validation.",
+    "Quality consulting toolkit: service-led product for lean/Six Sigma/IATF consultants who need repeatable evidence-to-training diagnostics [uncertain]."
+  ],
+  "risks": [
+    "Buyer fragmentation: quality, HR/L&D, operations, and supplier development may all like the idea but each may expect another department to pay.",
+    "Data availability: many plants do not capture enough structured incident, scrap reason, role, station, and training data to support automated pattern mining on day one.",
+    "Causality risk: recurring quality errors may stem from machine, material, design, supplier, workload, or process-control issues, not only skill gaps. KANIT must label skill inferences carefully.",
+    "Incumbent bundling: QMS, LMS, and connected-worker vendors can add basic AI recommendations or skills analytics.",
+    "Trust and labor relations: workers and unions may resist a tool that appears to score people from mistakes unless privacy, coaching, and mentor review are explicit.",
+    "Ford-specific access: Ford supplier portals and data are not available for the MVP; public evidence supports demo relevance but not integration feasibility [uncertain].",
+    "ROI proof: customers will ask for measured reductions in recurrence, scrap, rework, or audit rejection. KANIT needs pilots with baseline metrics."
+  ],
+  "sources": [
+    "https://asq.org/quality-resources/cost-of-quality - ASQ definition of cost of quality, COPQ, internal/external failure costs, scrap, rework, warranty claims, and 2025 ASQE insight about limited understanding of quality-cost impact.",
+    "https://themanufacturinginstitute.org/manufacturers-need-as-many-as-3-8-million-new-employees-by-2033/ - Manufacturing Institute/Deloitte 2024 workforce study summary: 3.8 million jobs needed by 2033, 1.9 million potentially unfilled, 65% talent challenge, training and partnerships.",
+    "https://www.nist.gov/mep/manufacturing-workforce-development - NIST MEP workforce development page: training, skills development, TWI, time-to-productivity, scrap and rework reduction.",
+    "https://www.nist.gov/mep/successstories/2025/amphenol-aerospace-reduces-scrap-through-arizona-mep-lean-green-belt-course - NIST MEP Amphenol Aerospace scrap reduction case with Lean Green Belt training, $60,000 documented project savings, and $932,000 total savings across eight projects.",
+    "https://www.nist.gov/mep/successstories/2022/lean-training-and-implementation-pays-big-results - NIST MEP Woodside Industries lean training case linking attrition/new hires to waste, rework, scrap and reporting throughput/training investment results.",
+    "https://www.nist.gov/mep/successstories/2021/quality-and-operating-system-enhancements-metal-fabrication-manufacturer - NIST MEP Abby Manufacturing case covering 8D, supplier quality, APQP/PPAP, process controls, and reported savings.",
+    "https://web.purinfo.ford.com/supqualport/html/training.html - Ford Supplier Quality portal showing QIM, Q1, SIM, 8D links, supplier quality training, and training modules.",
+    "https://s205.q4cdn.com/882619693/files/doc_financials/2025/ar/__Ford-2025-Annual-Report__.pdf - Ford 2025 Annual Report source for warranty and field service action accrual context.",
+    "https://www.fordotosan.com.tr/en/investors/at-a-glance/plants - Ford Otosan plant scale, Kocaeli capacity, WEF Global Lighthouse status for Golcuk and Yenikoy.",
+    "https://www.fordotosan.com.tr/en/sustainability/employees - Ford Otosan HR development and training-oriented employee context.",
+    "https://www.dozuki.com/solution/improve-quality-and-reduce-defects-dozuki-connected-worker - Dozuki connected-worker quality positioning, pricing/demo flow, scrap/rework and nonconformance claims, digital work instructions and training.",
+    "https://www.augmentir.com/case-studies/air-conditioner-hvac-manufacturer - Augmentir skills tracking/training case, LMS gap, skills matrix, targeted upskilling, and onboarding-time reduction.",
+    "https://www.octave.com/industries/manufacturing - Octave/ETQ manufacturing QMS positioning including automotive/IATF, supplier quality, nonconformance/CAPA, training management, and quality-cost controls.",
+    "https://www.grandviewresearch.com/industry-analysis/quality-management-software-market - QMS market size and segmentation, including employee training, nonconformance/CAPA, quality inspections, audit, and supplier quality management."
+  ],
+  "uncertain": [
+    "executive_verdict",
+    "ford_specific_evidence",
+    "buyer_personas",
+    "willingness_to_pay_evidence",
+    "market_gap",
+    "pivot_options",
+    "risks"
+  ]
+}

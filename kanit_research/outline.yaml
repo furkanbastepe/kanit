@@ -1,0 +1,21 @@
+topic: kanit_research
+execution:
+  output_dir: ./kanit_research/results
+  batch_size: 5
+  items_per_agent: 1
+items:
+  - name: Ford Quality and Supplier Pain
+    category: Automotive Quality / Supplier Development
+    description: Research Ford/Ford Otosan supplier quality, 8D, CAPA, PPAP, APQP, Q1, QIM, IATF 16949 customer specific requirements, and whether repeated quality evidence failures are real buyer pains.
+  - name: Ford HR Learning and Workforce Readiness
+    category: HR Tech / Learning and Development
+    description: Research Ford Otosan and automotive manufacturing learning, reskilling, plant training, readiness, technical academies, and whether HR/training teams would care about evidence-based skill gaps from quality incidents.
+  - name: Cost of Poor Quality Scrap and Manufacturing Skills Gap
+    category: Manufacturing Economics / Quality Cost
+    description: Research cost of poor quality, scrap/rework, manufacturing skills gap, training ROI, and whether reducing recurring quality errors through targeted learning is an urgent paid problem.
+  - name: Competitor and Substitute Landscape
+    category: Connected Worker / QMS / LMS / AI Quality
+    description: Research Augmentir, Poka, Dozuki, SwipeGuide, ETQ, MasterControl, 1factory, QualityEngineer.ai, 8D software, LMS/QMS substitutes, and the gap for incident-to-skill intelligence.
+  - name: Product Strategy and Pivot Options
+    category: Product Strategy / GTM / Pivot
+    description: Research whether KANIT should sell to Ford, Ford suppliers, QMS/LMS vendors, or pivot to supplier readiness, shift readiness, frontline learning, safety incidents, maintenance, or scrap risk intelligence.

@@ -1,0 +1,307 @@
+{
+  "demo_name": "quality_to_readiness_golden_path",
+  "demo_task_id": null,
+  "demo_employee_code": "demo-operator-01",
+  "incident_ids": [
+    "incident_demo_01",
+    "incident_demo_02",
+    "incident_demo_03"
+  ],
+  "readiness": {
+    "readiness_id": "ready_demo_01",
+    "created_at": "2026-05-14T09:36:27.622434+00:00",
+    "team_code": "demo_supplier_quality",
+    "station_code": "station-final-inspection",
+    "shift_code": "A",
+    "operation_name": "Final muayene lansman kontrolü",
+    "employee_codes": [
+      "demo-operator-01",
+      "demo-operator-02",
+      "demo-operator-03"
+    ],
+    "incident_count": 3,
+    "readiness_score": {
+      "score": 32,
+      "status": "needs_practice",
+      "open_gap_count": 2,
+      "approved_skill_count": 0,
+      "explanation": "100 - 68 = 32 (hazırlık_v1); açık beceri 2."
+    },
+    "score_breakdown": {
+      "rule_version": "readiness_v1",
+      "base_score": 100,
+      "final_score": 32,
+      "formula": "100 - 68 = 32",
+      "penalties": [
+        {
+          "code": "evidence_quality_gap",
+          "label": "Kanıt skoru hedefin altında",
+          "points": 22,
+          "evidence": {
+            "average_evidence_score": 60,
+            "target": 82
+          }
+        },
+        {
+          "code": "open_canonical_skill_gap",
+          "label": "Mentor onayı olmayan kanonik beceri açığı",
+          "points": 12,
+          "evidence": {
+            "skill_ids": [
+              "effectiveness_verification",
+              "visual_evidence_capture"
+            ]
+          }
+        },
+        {
+          "code": "repeated_canonical_gap",
+          "label": "Aynı kanonik beceri açığı birden fazla olayda tekrar etti",
+          "points": 30,
+          "evidence": [
+            {
+              "skill_id": "effectiveness_verification",
+              "incident_count": 3,
+              "why_this_gap": "Bu beceri açığı 3 olayda tekrar etti; sinyaller: 3 eksik etkinlik kontrolü. Ortalama kanıt skoru 60/100. Seviye dağılımı: 3 yüksek."
+            },
+            {
+              "skill_id": "visual_evidence_capture",
+              "incident_count": 3,
+              "why_this_gap": "Bu beceri açığı 3 olayda tekrar etti; sinyaller: 3 eksik düzeltici fotoğraf. Ortalama kanıt skoru 60/100. Seviye dağılımı: 3 yüksek."
+            }
+          ]
+        },
+        {
+          "code": "mentor_approval_pending",
+          "label": "Mentor onayı bekleyen beceri",
+          "points": 4,
+          "evidence": {
+            "open_skill_count": 2
+          }
+        }
+      ],
+      "bonuses": [],
+      "inputs": {
+        "evidence_scores": [
+          60,
+          60,
+          60
+        ],
+        "average_evidence_score": 60,
+        "unique_skill_ids": [
+          "effectiveness_verification",
+          "visual_evidence_capture"
+        ],
+        "approved_skill_ids": [],
+        "open_skill_ids": [
+          "effectiveness_verification",
+          "visual_evidence_capture"
+        ]
+      }
+    },
+    "risk_level": "critical",
+    "risk_drivers": [
+      {
+        "skill_id": "effectiveness_verification",
+        "title": "Etkinlik doğrulama",
+        "incident_count": 3,
+        "employee_count": 3,
+        "issue_counts": {
+          "missing_effectiveness_check": 3
+        },
+        "severity_counts": {
+          "high": 3
+        },
+        "average_evidence_score": 60,
+        "confidence": 0.95,
+        "why_this_gap": "Bu beceri açığı 3 olayda tekrar etti; sinyaller: 3 eksik etkinlik kontrolü. Ortalama kanıt skoru 60/100. Seviye dağılımı: 3 yüksek.",
+        "recommended_action": "Etkinlik doğrulama için vardiya öncesi 5 dakikalık kanıtlı mikro-pratik ve mentor kontrolü aç.",
+        "evidence_trace": [
+          {
+            "incident_id": "incident_demo_03",
+            "source_issue_code": "missing_effectiveness_check",
+            "severity": "high",
+            "checklist_score": 60,
+            "employee_code": "demo-operator-03",
+            "station_code": "station-final-inspection",
+            "case_id": "case_demo_03"
+          },
+          {
+            "incident_id": "incident_demo_02",
+            "source_issue_code": "missing_effectiveness_check",
+            "severity": "high",
+            "checklist_score": 60,
+            "employee_code": "demo-operator-02",
+            "station_code": "station-final-inspection",
+            "case_id": "case_demo_02"
+          },
+          {
+            "incident_id": "incident_demo_01",
+            "source_issue_code": "missing_effectiveness_check",
+            "severity": "high",
+            "checklist_score": 60,
+            "employee_code": "demo-operator-01",
+            "station_code": "station-final-inspection",
+            "case_id": "case_demo_01"
+          }
+        ]
+      },
+      {
+        "skill_id": "visual_evidence_capture",
+        "title": "Görsel kanıt yakalama",
+        "incident_count": 3,
+        "employee_count": 3,
+        "issue_counts": {
+          "missing_corrective_photo": 3
+        },
+        "severity_counts": {
+          "high": 3
+        },
+        "average_evidence_score": 60,
+        "confidence": 0.95,
+        "why_this_gap": "Bu beceri açığı 3 olayda tekrar etti; sinyaller: 3 eksik düzeltici fotoğraf. Ortalama kanıt skoru 60/100. Seviye dağılımı: 3 yüksek.",
+        "recommended_action": "Görsel kanıt yakalama için vardiya öncesi 5 dakikalık kanıtlı mikro-pratik ve mentor kontrolü aç.",
+        "evidence_trace": [
+          {
+            "incident_id": "incident_demo_03",
+            "source_issue_code": "missing_corrective_photo",
+            "severity": "high",
+            "checklist_score": 60,
+            "employee_code": "demo-operator-03",
+            "station_code": "station-final-inspection",
+            "case_id": "case_demo_03"
+          },
+          {
+            "incident_id": "incident_demo_02",
+            "source_issue_code": "missing_corrective_photo",
+            "severity": "high",
+            "checklist_score": 60,
+            "employee_code": "demo-operator-02",
+            "station_code": "station-final-inspection",
+            "case_id": "case_demo_02"
+          },
+          {
+            "incident_id": "incident_demo_01",
+            "source_issue_code": "missing_corrective_photo",
+            "severity": "high",
+            "checklist_score": 60,
+            "employee_code": "demo-operator-01",
+            "station_code": "station-final-inspection",
+            "case_id": "case_demo_01"
+          }
+        ]
+      }
+    ],
+    "recommended_actions": [
+      {
+        "action_type": "pre_shift_micro_practice",
+        "priority": "high",
+        "skill_id": "effectiveness_verification",
+        "title": "Etkinlik doğrulama",
+        "owner": "mentor_or_team_leader",
+        "expected_evidence": [
+          "Kısa vardiya öncesi uygulama cevabı",
+          "İstasyon veya parça üzerinde kanıtlı kontrol",
+          "Mentor onayı"
+        ],
+        "reason": "Bu beceri açığı 3 olayda tekrar etti; sinyaller: 3 eksik etkinlik kontrolü. Ortalama kanıt skoru 60/100. Seviye dağılımı: 3 yüksek."
+      }
+    ],
+    "evidence_trace": [
+      {
+        "incident_id": "incident_demo_03",
+        "source_issue_code": "missing_effectiveness_check",
+        "severity": "high",
+        "checklist_score": 60,
+        "employee_code": "demo-operator-03",
+        "station_code": "station-final-inspection",
+        "case_id": "case_demo_03",
+        "skill_id": "effectiveness_verification",
+        "title": "Etkinlik doğrulama"
+      },
+      {
+        "incident_id": "incident_demo_02",
+        "source_issue_code": "missing_effectiveness_check",
+        "severity": "high",
+        "checklist_score": 60,
+        "employee_code": "demo-operator-02",
+        "station_code": "station-final-inspection",
+        "case_id": "case_demo_02",
+        "skill_id": "effectiveness_verification",
+        "title": "Etkinlik doğrulama"
+      },
+      {
+        "incident_id": "incident_demo_01",
+        "source_issue_code": "missing_effectiveness_check",
+        "severity": "high",
+        "checklist_score": 60,
+        "employee_code": "demo-operator-01",
+        "station_code": "station-final-inspection",
+        "case_id": "case_demo_01",
+        "skill_id": "effectiveness_verification",
+        "title": "Etkinlik doğrulama"
+      }
+    ],
+    "integration_events": [
+      {
+        "event_type": "supplier_readiness.updated",
+        "message": "Hazırlık skoru entegrasyon sistemleri için güncellendi.",
+        "created_at": "2026-05-14T09:36:27.622424+00:00",
+        "metadata": {
+          "team_code": "demo_supplier_quality",
+          "station_code": "station-final-inspection",
+          "shift_code": "A",
+          "risk_level": "critical"
+        }
+      },
+      {
+        "event_type": "readiness.risk_detected",
+        "message": "Vardiya başlamadan önce kanıta dayalı beceri riski bulundu.",
+        "created_at": "2026-05-14T09:36:27.622427+00:00",
+        "metadata": {
+          "team_code": "demo_supplier_quality",
+          "station_code": "station-final-inspection",
+          "shift_code": "A",
+          "driver_count": 2
+        }
+      }
+    ],
+    "claims_boundary": "Bu skor insan performansını cezalandırmak için değil, operasyon başlamadan önce kanıta dayalı beceri ve standart iş risklerini görünür kılmak içindir."
+  },
+  "convergence_proof": {
+    "canonical_skill_id": "effectiveness_verification",
+    "incident_count": 3,
+    "aliases_seen": [
+      {
+        "status": "matched",
+        "input": "etkinlik kontrolü eksik",
+        "skill_id": "effectiveness_verification",
+        "title_tr": "Etkinlik doğrulama",
+        "title_en": "Effectiveness verification",
+        "confidence": 0.86,
+        "match_type": "partial_alias",
+        "ontology_version": "skills_v1"
+      },
+      {
+        "status": "matched",
+        "input": "etkinlik kontrolü yok",
+        "skill_id": "effectiveness_verification",
+        "title_tr": "Etkinlik doğrulama",
+        "title_en": "Effectiveness verification",
+        "confidence": 1.0,
+        "match_type": "exact_alias",
+        "ontology_version": "skills_v1"
+      },
+      {
+        "status": "matched",
+        "input": "düzeltici aksiyon takibi",
+        "skill_id": "effectiveness_verification",
+        "title_tr": "Etkinlik doğrulama",
+        "title_en": "Effectiveness verification",
+        "confidence": 1.0,
+        "match_type": "exact_alias",
+        "ontology_version": "skills_v1"
+      }
+    ],
+    "message": "Üç farklı ifade tek kanonik beceri düğümüne bağlandı: etkinlik_dogrulama."
+  }
+}

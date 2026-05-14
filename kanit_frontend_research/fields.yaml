@@ -1,0 +1,33 @@
+fields:
+  research_item:
+    description: "Araştırılan frontend alanı veya benchmark."
+  executive_verdict:
+    description: "Kanıt için kısa, acımasız karar: kullan, dikkatli kullan, kullanma."
+  relevance_to_kanit:
+    description: "Ford buildathon demosu, kalite/readiness hikayesi ve mevcut backend ile ilişki."
+  benchmark_repos_or_products:
+    description: "İlgili GitHub repoları, ürünler, tasarım örnekleri veya benchmarklar."
+  github_star_evidence:
+    description: "Güncel yıldız/aktivite kanıtı; yıldızın tek başına kalite kanıtı olmadığı not edilmeli."
+  premium_design_patterns:
+    description: "Awwwards/premium SaaS seviyesinde uygulanabilir desenler."
+  recommended_tools:
+    description: "Önerilen framework, UI, animation, graph, chart, icon ve asset araçları."
+  recommended_skills:
+    description: "Bu iş için kullanılacak yerel Codex skillleri veya çalışma disiplini."
+  animation_and_svg_strategy:
+    description: "Hangi animasyon/SVG yaklaşımı anlamlı, hangisi gösteriş olur."
+  ux_information_architecture:
+    description: "3 dakikalık demo ve ürün deneyimi için önerilen ekran/akış."
+  accessibility_performance_rules:
+    description: "Kontrast, reduced motion, layout shift, responsive, loading state ve performans kuralları."
+  implementation_implications:
+    description: "Mevcut FastAPI backend’e bağlanırken tasarım ve teknik kararların sonucu."
+  what_to_avoid:
+    description: "AI-generated/generic görünüm, gereksiz 3D, dashboard kalabalığı, mock kokusu gibi riskler."
+  demo_story_implications:
+    description: "Sunumda hangi ürün cümlesi, hangi sahne ve hangi kanıt öne çıkarılmalı."
+  sources:
+    description: "Kullanılan kaynak linkleri."
+  uncertain:
+    description: "Doğrulanamayan veya ek kullanıcı kararı gerektiren noktalar."

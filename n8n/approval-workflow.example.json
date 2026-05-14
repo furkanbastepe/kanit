@@ -1,0 +1,34 @@
+{
+  "name": "KANIT 8D CAPA Human Approval",
+  "nodes": [
+    {
+      "name": "Webhook - KANIT Approval Request",
+      "type": "n8n-nodes-base.webhook",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "kanit-approval-request",
+        "responseMode": "onReceived"
+      }
+    },
+    {
+      "name": "Send Approval Message",
+      "type": "n8n-nodes-base.noOp",
+      "parameters": {}
+    }
+  ],
+  "connections": {
+    "Webhook - KANIT Approval Request": {
+      "main": [
+        [
+          {
+            "node": "Send Approval Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "notes": "Bu dosya buildathon icin import edilebilir iskelet ornegidir. Send Approval Message node'unu Slack, Teams, Gmail, Outlook veya WhatsApp Business node'u ile degistir."
+}
+

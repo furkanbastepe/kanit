@@ -1,0 +1,123 @@
+{
+  "research_item": "Industrial SaaS UX Benchmarks: Linear, Stripe, Awwwards data visualization examples, and B2B SaaS dashboard patterns for the KANIT frontend.",
+  "executive_verdict": "Use the Linear/Stripe level of restraint as the baseline and borrow only selective Awwwards-style motion for the evidence graph moment. Do not build a flashy landing page. KANIT should feel like a premium operational command surface: fast, quiet, auditable, and immediately understandable.",
+  "relevance_to_kanit": "KANIT's strongest frontend is not a generic HR-tech dashboard. It is a live operational risk demo: three quality incidents converge into one canonical skill gap, then a shift readiness score explains why tomorrow's team is risky and what a mentor should approve. Linear is relevant because it turns team operations into modular dashboards with context, filters, charts, and direct drill-down. Stripe is relevant because it shows how enterprise UI earns trust through controlled styling, contextual surfaces, consistent components, and accessibility constraints. Awwwards is relevant only for one memorable visual scene: evidence lines, timeline transitions, and animated data storytelling.",
+  "benchmark_repos_or_products": [
+    "Linear Dashboards: modular dashboard surfaces for operational health, team workflow, resource reporting, side-by-side context, and drill-down from metrics.",
+    "Stripe Apps and Dashboard UI: constrained component system, contextual app drawer, high accessibility bar, charts/tables/lists, and workflow surfaces that meet users inside existing work.",
+    "Awwwards State of AI 2025 data visualization: premium data storytelling patterns such as on-scroll animations, timeline, transitions, statistics blocks, and interactive infographics.",
+    "Dashboard Design Patterns research: systematic review of 144 dashboards and eight dashboard pattern groups; useful for avoiding arbitrary widget dumping.",
+    "Next.js: highly adopted React framework suitable for a polished demo app and later production frontend.",
+    "Tailwind CSS: high-adoption utility CSS system for controlled custom visual language without fighting CSS drift.",
+    "shadcn/ui: accessible, ownable component code and a strong base for premium SaaS surfaces.",
+    "React Flow / xyflow: best fit for KANIT's Evidence Graph because the core visual is node-link causality, not a generic chart.",
+    "Motion: best fit for restrained React transitions, path reveals, score transitions, and reduced-motion-aware UI.",
+    "Lucide: consistent SVG icon vocabulary for operational actions and status labels.",
+    "Recharts: useful for simple supporting charts such as score breakdown bars or trend sparklines, but should not drive the main demo."
+  ],
+  "github_star_evidence": "As of pages crawled around 2026-05-14, Next.js showed about 139k stars, Tailwind CSS about 95k stars and usage by more than 15.3m repositories, shadcn/ui about 114k stargazers via the GitHub API response, xyflow about 36.6k stars, Motion about 31.9k stars, Lucide about 22.6k stars, and Recharts about 27.1k stars. These counts prove ecosystem adoption, not product quality by themselves. Stars should be treated as a proxy for community support, examples, fixes, and hiring familiarity, not as a design decision engine. [uncertain]",
+  "premium_design_patterns": [
+    "Decision-first dashboard: every screen must answer 'What is risky, why is it risky, and what should I do next?' within seconds.",
+    "Context beside metric: show the score next to the incidents, canonical skill node, and formula breakdown. A lone number such as 48/100 will feel fake.",
+    "One hero moment inside the app, not a hero page: the Evidence Graph should be the signature scene where incident cards draw animated lines into one skill gap.",
+    "Progressive disclosure: default to one sentence, one risk score, and one action; expose JSON/audit/formula details on demand.",
+    "Role-aware copy: the primary user is a quality/production/HR training stakeholder, so labels should be operational: 'Final inspection risk', 'Effectiveness verification gap', 'Mentor approval pending'.",
+    "Side-by-side proof: pair each AI conclusion with the source incident count, evidence count, station, role, and normalized ontology label.",
+    "Premium restraint: use whitespace, crisp borders, stable layout, precise typography, and quiet motion instead of large gradients, decorative 3D, or generic AI-glow visuals.",
+    "Embedded workflow feel: borrow Stripe's contextual drawer idea by making mentor review and remediation feel like an action panel connected to the selected risk, not a separate page."
+  ],
+  "recommended_tools": [
+    "Next.js + React + TypeScript for the frontend shell.",
+    "Tailwind CSS for tokens, spacing, layout, and custom industrial visual language.",
+    "shadcn/ui or Radix-based components for buttons, tabs, dialogs, tooltips, drawer, table, and form controls.",
+    "React Flow / @xyflow/react for the Evidence Graph, using custom nodes and controlled edges.",
+    "Motion for page transitions, graph line reveal, count-up, card entrance, and reduced-motion variants.",
+    "Lucide React for icons in buttons and status controls.",
+    "Recharts only for small supporting visuals: formula contribution bars, trend sparkline, or readiness history.",
+    "Custom SVG for the KANIT mark, subtle factory-line motif, and evidence-path embellishments.",
+    "Playwright screenshots for final visual QA on desktop and mobile.",
+    "No Three.js for the first version unless there is extra time; it would add risk without improving the core demo."
+  ],
+  "recommended_skills": [
+    "research-deep for source-backed design and tool decisions.",
+    "superpowers:brainstorming before locking the final screen concept.",
+    "ui-ux-pro-max for accessibility, responsive layout, information hierarchy, and motion discipline.",
+    "ckm-design and ckm-ui-styling for visual identity, tokens, component polish, and SVG/icon direction.",
+    "design-review or gstack/design-review after the first frontend pass.",
+    "qa or Browser plugin for local app interaction and screenshot verification."
+  ],
+  "animation_and_svg_strategy": [
+    "Use motion to explain causality, not decorate. The key animation: incident cards appear, evidence tags highlight, lines draw into a canonical skill node, then the readiness formula reveals penalties.",
+    "Keep durations around 150-300ms for UI controls and 600-900ms only for the main graph reveal.",
+    "Use SVG paths for evidence lines because they are lightweight, crisp, and easy to make deterministic.",
+    "Provide reduced-motion mode: skip path drawing and use immediate state changes with subtle opacity transitions.",
+    "Avoid animated background blobs, excessive gradients, spinning 3D assets, parallax hero sections, and motion that slows the demo.",
+    "Use one subtle background system: a low-contrast grid or production-line trace behind the main workspace, not a decorative orb field."
+  ],
+  "ux_information_architecture": [
+    "Screen 1: Demo Launcher / Operational Brief. One product sentence: 'KANIT finds the skill risk hidden inside repeated quality incidents before the next shift starts.' One primary action: 'Run readiness demo'.",
+    "Screen 2: Evidence Graph. Three incident nodes converge into 'Effectiveness verification' with visible station, role, evidence status, and canonical normalization label.",
+    "Screen 3: Shift Readiness Board. Show score, risk level, formula, penalties, affected station, and mentor action. The formula must be visible enough to defeat the 'AI made up the score' objection.",
+    "Screen 4: Mentor Review Drawer. Show the micro-practice, expected evidence, approve/needs practice/reject actions, and audit trail status.",
+    "Secondary surfaces: API status, ontology preview, and raw JSON should be available in a technical drawer for interview credibility, not placed in the main story.",
+    "Mobile layout: convert the graph into a vertical causal timeline so it remains understandable on a phone."
+  ],
+  "accessibility_performance_rules": [
+    "Use at least 4.5:1 text contrast for normal text and never rely on red/yellow/green alone; pair status color with icon, label, and explanation.",
+    "All interactive targets should be at least 44x44 px, with visible keyboard focus.",
+    "Respect prefers-reduced-motion and avoid scroll-jacking.",
+    "Use fixed graph/card dimensions during loading so the demo does not jump when data arrives.",
+    "Prefer transform and opacity animations; avoid expensive layout animations during the graph reveal.",
+    "Use skeleton states that match the final layout instead of spinners.",
+    "Keep the first demo payload local/API-light and cache-safe so frontend polish is not destroyed by slow network calls.",
+    "Use responsive grids and a mobile vertical timeline; no horizontal scroll for the primary demo.",
+    "Limit charts to the 5-7 metrics needed for the decision: readiness score, repeated gap count, missing evidence count, mentor status, station/role risk."
+  ],
+  "implementation_implications": [
+    "The frontend should call the existing FastAPI demo endpoints rather than fake UI state: POST /demo/seed-readiness and POST /shifts/readiness are enough for the main story.",
+    "The design should map backend objects directly to UI sections: incidents become graph nodes, normalized skill gaps become convergence nodes, score_breakdown becomes the visible formula, and mentor status becomes the action drawer.",
+    "The Evidence Graph must be deterministic for the buildathon demo. Use known sample data and then add live API mode after the core path is stable.",
+    "The backend's ontology normalization is the technical differentiator; the frontend should make this visible with a small 'raw term -> canonical skill' proof chip.",
+    "Do not build a broad admin dashboard first. Build the guided demo path first, then add dashboard navigation around it.",
+    "Create a small design-system file before coding: tokens, typography, status colors, graph node styles, motion rules, and copy tone."
+  ],
+  "what_to_avoid": [
+    "Generic AI SaaS look: giant gradient hero, glass cards everywhere, vague 'AI insights' cards, and stock dashboard widgets.",
+    "A dashboard full of numbers without an action. KANIT wins when it says what changed tomorrow's shift risk and what mentor action is needed.",
+    "Awwwards excess: scroll-jacking, illegible typography, background spectacle, or interactions that make an operational tool feel unserious.",
+    "Three.js or heavy WebGL for the first version. It can impress visually but risks performance and distracts from the evidence-to-skill claim.",
+    "COPQ as a headline unless connected to real data. It can stay as a secondary roadmap or optional calculator.",
+    "Mock smell. Avoid static fake screenshots; drive the demo from seeded backend responses and show an API/audit drawer if asked.",
+    "Overusing Lucide icons without labels in critical workflows. Operational users need explicit language.",
+    "Over-polishing a landing page while the actual demo path remains thin."
+  ],
+  "demo_story_implications": [
+    "Open with user value, not architecture: 'Tomorrow's shift can fail for a skill gap that is already visible in yesterday's quality incidents.'",
+    "Main 3-minute arc: run demo, watch three incidents converge into one skill gap, reveal readiness score with formula, assign mentor review.",
+    "The strongest sentence: 'ChatGPT can summarize one 8D report; KANIT finds the repeated skill risk across incidents and shows why the next shift is not ready.'",
+    "The signature visual should be the convergence graph, not a dashboard grid.",
+    "Show the score formula on-screen: this builds trust with Ford engineers and prevents the arbitrary-AI-score objection.",
+    "End with practical extensibility: quality is the first connector; the same evidence-to-skill engine can later ingest safety, maintenance, production scrap, and customer complaint incidents."
+  ],
+  "sources": [
+    "https://linear.app/now/dashboards-best-practices",
+    "https://linear.app/docs/dashboards",
+    "https://docs.stripe.com/stripe-apps/design",
+    "https://docs.stripe.com/stripe-apps/components",
+    "https://www.awwwards.com/inspiration/data-visualization-state-of-ai-2025",
+    "https://arxiv.org/abs/2205.00757",
+    "https://content.ieeevis.org/year/2022/paper_v-full-1554.html",
+    "https://github.com/vercel/next.js",
+    "https://github.com/tailwindlabs/tailwindcss",
+    "https://api.github.com/repos/shadcn-ui/ui",
+    "https://github.com/xyflow/xyflow",
+    "https://github.com/motiondivision/motion",
+    "https://github.com/lucide-icons/lucide",
+    "https://github.com/recharts",
+    "https://github.com/greensock/GSAP"
+  ],
+  "uncertain": [
+    "github_star_evidence",
+    "premium_design_patterns"
+  ]
+}

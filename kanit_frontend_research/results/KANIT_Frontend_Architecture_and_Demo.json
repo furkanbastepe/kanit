@@ -1,0 +1,148 @@
+{
+  "research_item": "KANIT Frontend Architecture and Demo",
+  "executive_verdict": "Use a focused product-demo frontend, not a broad dashboard and not a marketing landing page. The strongest buildathon interface is a guided 3-minute operational demo: seed three quality incidents, show their convergence into one canonical skill gap, explain the shift readiness formula, then create a mentor action. This is the best way to make KANIT feel like a real system instead of an AI-generated report writer.",
+  "relevance_to_kanit": "The current FastAPI backend already supports the exact story the frontend must tell: /demo/seed-readiness creates the golden path, /skills/ontology and /skills/normalize prove deterministic skill normalization, /shifts/readiness returns an auditable score_breakdown, /incidents/{incident_id}/evidence-graph exposes evidence relationships, /learning-tasks/{task_id} and /mentor-reviews close the human approval loop, and /exports/readiness/{readiness_id} demonstrates integration positioning for Poka, Augmentir, LMS, QMS, BI, or generic clients.",
+  "benchmark_repos_or_products": [
+    "React Flow / xyflow for node-link operational evidence graphs.",
+    "Motion for meaningful panel transitions, path reveals, and score changes.",
+    "shadcn/ui, Radix UI, Tailwind CSS, and Lucide icons for a polished but maintainable operational SaaS surface.",
+    "Linear, Vercel, Stripe Dashboard, Retool, and modern observability dashboards as UX references for dense but calm product interfaces.",
+    "Awwwards-style references should be used for craft, motion pacing, typography, and spatial rhythm, not for heavy 3D spectacle."
+  ],
+  "github_star_evidence": "For this architecture item, GitHub star counts are secondary because the core decision is fit-to-demo and API compatibility. The broader research track should still inspect high-star repos such as vercel/next.js, tailwindlabs/tailwindcss, shadcn-ui/ui, motiondivision/motion, xyflow/xyflow, lucide-icons/lucide, pmndrs/react-three-fiber, mrdoob/three.js, d3/d3, recharts/recharts, airbnb/lottie-web, and greensock/GSAP. Stars should be treated as ecosystem confidence, not as proof that a tool is right for KANIT.",
+  "premium_design_patterns": [
+    "App-first opening: show the actual readiness system immediately, not a hero page with vague claims.",
+    "One-sentence value framing above the demo: 'KANIT turns repeated quality incidents into tomorrow's shift readiness signal.'",
+    "Evidence convergence as the signature visual: three incident cards animate into one canonical skill node, with thin industrial linework and readable labels.",
+    "Formula transparency: the score panel must show 100 - penalties + bonuses = final score, with each penalty tied to evidence.",
+    "Human-in-the-loop credibility: mentor review is visible as a required step, not hidden in a webhook log.",
+    "Calm operational palette: light neutral surfaces, graphite text, one blue accent, restrained amber/red/green status colors, and no decorative orbs.",
+    "Microcopy should sound like a factory readiness tool, not a generic AI assistant."
+  ],
+  "recommended_tools": {
+    "framework": "Next.js with React and TypeScript if starting a new frontend; Vite + React is acceptable if speed and simple local demo are more important than routing/server features.",
+    "styling": "Tailwind CSS with CSS custom properties for semantic tokens.",
+    "ui_primitives": "shadcn/ui plus Radix primitives for dialogs, tabs, popovers, tooltips, and accessible form controls.",
+    "icons": "Lucide React for compact operational actions and status affordances.",
+    "motion": "Motion for React for page transitions, evidence path reveal, step transitions, score count-up, and reduced-motion support.",
+    "graph": "React Flow for the Evidence Graph if editable/inspectable nodes are needed; custom SVG is better for the 3-minute golden demo if the graph is static and must look highly curated.",
+    "charts": "Use lightweight custom SVG or Recharts only for small score breakdown bars. Avoid a full analytics charting stack for the buildathon demo.",
+    "assets": "Use custom inline SVG linework for station, incident, skill, and mentor artifacts. Avoid stock illustrations.",
+    "testing": "Playwright screenshots for desktop and mobile demo states; axe or equivalent accessibility checks if dependencies allow."
+  },
+  "recommended_skills": [
+    "research-deep for tool and benchmark validation before final stack selection.",
+    "superpowers:brainstorming before locking the experience and interaction model.",
+    "ui-ux-pro-max for accessibility, responsive layout, motion restraint, and interaction quality.",
+    "ckm-design and ckm-ui-styling for visual system, tokens, typography, and production polish.",
+    "design-review or qa after implementation to catch overlap, weak hierarchy, motion noise, and mobile issues."
+  ],
+  "animation_and_svg_strategy": {
+    "use": [
+      "Animate the user's understanding, not decoration: incident cards flow into the canonical skill node, then the score formula unfolds.",
+      "Use 150-300 ms transitions for panels and controls; use a slightly longer 600-900 ms path draw only for the main evidence convergence moment.",
+      "Animate transform and opacity instead of layout-changing properties.",
+      "Use subtle background grid or process-line SVG at very low contrast to imply operational systems without visual noise.",
+      "Respect prefers-reduced-motion by showing the final graph state without path drawing."
+    ],
+    "avoid": [
+      "No decorative gradient orbs, bokeh blobs, AI-looking glassmorphism overload, random 3D scenes, or animated backgrounds that compete with the data.",
+      "No generic robot, brain, circuit-board, or chatbot illustration.",
+      "No animation that delays the 3-minute demo or hides the score explanation."
+    ]
+  },
+  "ux_information_architecture": {
+    "primary_route": "/",
+    "screen_model": [
+      {
+        "screen": "Demo Launcher",
+        "job": "Make the value obvious in five seconds and start the golden path.",
+        "primary_api": "POST /demo/seed-readiness",
+        "content": "One sentence, one primary button, backend status, and a compact promise: incidents -> skill gap -> shift risk -> mentor action."
+      },
+      {
+        "screen": "Evidence Convergence",
+        "job": "Prove that KANIT is not merely summarizing text.",
+        "primary_api": "Use incident_ids from /demo/seed-readiness, optionally GET /incidents/{incident_id}/evidence-graph.",
+        "content": "Three incident nodes with alias labels route into effectiveness_verification. Show convergence_proof.aliases_seen and convergence_proof.canonical_skill_id."
+      },
+      {
+        "screen": "Shift Readiness",
+        "job": "Answer the Ford engineer's question: how did you calculate the score?",
+        "primary_api": "readiness object returned by /demo/seed-readiness or POST /shifts/readiness.",
+        "content": "Large score, risk level, rule_version, formula, penalties, bonuses, and evidence trace. The score cannot look arbitrary."
+      },
+      {
+        "screen": "Mentor Action",
+        "job": "Show the human approval loop and turn risk into an operational next step.",
+        "primary_api": "GET /learning-tasks/{task_id} and POST /mentor-reviews.",
+        "content": "A micro-practice task, expected evidence, mentor decision buttons, and the statement that readiness is not approved until the mentor closes the loop."
+      }
+    ],
+    "secondary_surfaces": [
+      "A compact API drawer for technical reviewers showing endpoint names and response fragments.",
+      "An export drawer for Poka/Augmentir/LMS/QMS positioning, kept secondary so it does not steal demo time.",
+      "A mobile layout that turns the graph into a vertical evidence chain rather than trying to shrink a wide canvas."
+    ],
+    "copy_strategy": "Lead with user benefit, then reveal technical proof. The opening line should be about reducing tomorrow's shift risk, not about ontologies, agents, or graphs."
+  },
+  "accessibility_performance_rules": [
+    "All interactive targets should be at least 44x44 px and keyboard reachable.",
+    "Use visible focus states and semantic buttons rather than div-based controls.",
+    "Do not rely on color alone for risk. Pair color with text, icon, and explanation.",
+    "Maintain at least WCAG AA contrast for body text and controls.",
+    "Reserve stable dimensions for score cards, graph nodes, and formula panels to avoid layout shift during demo playback.",
+    "Provide skeleton or staged loading states while the demo seed request is running.",
+    "Support prefers-reduced-motion and avoid continuous background animation.",
+    "Keep the first load small: avoid Three.js, Lottie, Rive, or GSAP unless a specific interaction justifies the cost.",
+    "Design mobile first, but optimize the live presentation viewport around 1366x768 and 1440x900 because that is likely where the jury will watch."
+  ],
+  "implementation_implications": {
+    "api_client": "Create a typed frontend API client for /health, /demo/seed-readiness, /skills/ontology, /skills/normalize, /shifts/readiness, /learning-tasks/{task_id}, /mentor-reviews, and /exports/readiness/{readiness_id}. Include X-KANIT-API-Key support through environment configuration.",
+    "state_model": "Use a simple demo state machine: idle -> seeding -> convergence -> readiness -> mentor_review -> exported. This is more reliable than free navigation for a 3-minute buildathon demo.",
+    "data_contract": "Treat readiness.score_breakdown, readiness.risk_drivers, readiness.evidence_trace, and convergence_proof as first-class UI objects. Do not flatten them into vague text.",
+    "error_handling": "If /health fails, show backend offline with a clear setup hint. Do not silently switch to frontend mock data because the user explicitly rejected mock fallback for production credibility.",
+    "security": "Do not expose real API keys in client code. For local demo, use a public demo key only if the backend is configured that way; otherwise proxy through a local server route.",
+    "future_extensibility": "The same frontend shell can later add uploaded 8D analysis, team learning map, skill miner, and integration export pages without changing the core story."
+  },
+  "what_to_avoid": [
+    "Avoid a generic AI SaaS landing page. The first screen must be the product experience.",
+    "Avoid a crowded dashboard with ten KPIs. The jury should remember one thing: repeated incidents became a shift readiness risk.",
+    "Avoid leading with COPQ proxy because it can look like a simple calculator without real cost integration.",
+    "Avoid showing n8n, MCP, RAG, or model plumbing as the main story. They can be technical appendix items.",
+    "Avoid claiming Ford portal integration, autonomous compliance, or certified quality decisions.",
+    "Avoid free-form LLM labels in the UI. Always show canonical skill IDs and explain normalization.",
+    "Avoid huge 3D/scroll-driven spectacle. It may win attention but weaken trust for an operational quality product."
+  ],
+  "demo_story_implications": {
+    "opening_line": "KANIT finds the skill gap hidden inside repeated quality incidents before tomorrow's shift starts.",
+    "three_minute_script": [
+      "0:00-0:25: Show the live app, say the problem in one sentence, click Start Demo.",
+      "0:25-1:05: Three 8D/CAPA incidents appear and converge into effectiveness_verification despite different labels.",
+      "1:05-1:50: Shift Readiness shows risk, formula, penalties, and evidence trace. Emphasize that the score is rule-based, not AI magic.",
+      "1:50-2:30: Open the mentor action and show the micro-practice tied to the real incident pattern.",
+      "2:30-3:00: Close with integration story: KANIT does not replace Poka/Augmentir/QMS; it feeds them evidence-based skill signals."
+    ],
+    "defense_line": "ChatGPT can summarize an 8D case. KANIT normalizes repeated incident evidence into a canonical skill gap, calculates an auditable readiness score, and requires human approval before calling the shift ready.",
+    "frontend_success_criteria": [
+      "A non-technical HR viewer understands the value in five seconds.",
+      "A Ford quality engineer can inspect the score formula and evidence trace.",
+      "A technical reviewer sees real API-backed state transitions.",
+      "The visual signature is memorable: three incidents converging into one skill risk."
+    ]
+  },
+  "sources": [
+    "/Users/furkan/Desktop/proje_SON/features/main.py",
+    "/Users/furkan/Desktop/proje_SON/README.md",
+    "/Users/furkan/Desktop/proje_SON/features/services/skill_intelligence.py",
+    "/Users/furkan/Desktop/proje_SON/features/services/readiness_scoring.py",
+    "https://reactflow.dev/",
+    "https://motion.dev/",
+    "https://ui.shadcn.com/",
+    "https://www.radix-ui.com/primitives",
+    "https://lucide.dev/",
+    "https://www.w3.org/WAI/fundamentals/accessibility-intro/",
+    "https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+  ],
+  "uncertain": []
+}

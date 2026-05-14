@@ -1,0 +1,2 @@
+"""KANIT backend package."""
+

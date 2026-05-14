@@ -1,0 +1,142 @@
+{
+  "research_item": "High-Star Frontend Stack",
+  "executive_verdict": "Use a deliberately narrow production stack: Next.js + React + TypeScript + Tailwind CSS + shadcn/ui/Radix + Motion + xyflow/React Flow + Lucide. Add Recharts only if the score breakdown needs charts beyond simple SVG/CSS. Do not add Three.js, GSAP, Lottie, or Rive to the first build unless a specific interaction cannot be delivered with Motion and SVG. For KANIT, restraint will feel more senior than spectacle.",
+  "relevance_to_kanit": "KANIT's strongest demo is not a marketing site; it is an operational product moment. The frontend should make one idea instantly obvious: three historical quality incidents converge into one canonical skill gap, and that gap changes tomorrow's shift readiness. The current FastAPI backend already supports this with endpoints such as POST /demo/seed-readiness, GET /skills/ontology, POST /skills/normalize, POST /shifts/readiness, GET /exports/readiness/{readiness_id}, and incident analysis endpoints. The chosen stack should turn those backend facts into a polished, explainable, mobile-friendly demo without hiding the engineering behind generic dashboard chrome.",
+  "benchmark_repos_or_products": [
+    {
+      "name": "React",
+      "repo": "https://github.com/facebook/react",
+      "why_it_matters": "Default choice for a cross-platform web UI ecosystem; supports the later web/mobile story through React mental models and React Native adjacency."
+    },
+    {
+      "name": "Next.js",
+      "repo": "https://github.com/vercel/next.js",
+      "why_it_matters": "Fastest route to a polished React application with routing, API proxy options, image/font handling, and deployment familiarity."
+    },
+    {
+      "name": "Tailwind CSS",
+      "repo": "https://github.com/tailwindlabs/tailwindcss",
+      "why_it_matters": "Excellent for a custom product surface when disciplined design tokens are enforced; avoids fighting component library defaults."
+    },
+    {
+      "name": "shadcn/ui",
+      "repo": "https://github.com/shadcn-ui/ui",
+      "why_it_matters": "Good base for accessible, editable components; code is copied into the app, so KANIT can avoid looking like an unmodified template."
+    },
+    {
+      "name": "Radix Primitives",
+      "repo": "https://github.com/radix-ui/primitives",
+      "why_it_matters": "Strong accessible primitive layer behind shadcn-style components."
+    },
+    {
+      "name": "Motion",
+      "repo": "https://github.com/motiondivision/motion",
+      "why_it_matters": "Best fit for meaningful micro-interactions, step transitions, path emphasis, and reduced-motion support without a heavy animation stack."
+    },
+    {
+      "name": "xyflow / React Flow",
+      "repo": "https://github.com/xyflow/xyflow",
+      "why_it_matters": "Directly maps to KANIT's evidence graph: incidents, root causes, evidence, station, role, and canonical skill nodes."
+    },
+    {
+      "name": "Recharts",
+      "repo": "https://github.com/recharts/recharts",
+      "why_it_matters": "Useful for simple readiness and penalty visuals if pure SVG/CSS becomes too custom."
+    },
+    {
+      "name": "Lucide",
+      "repo": "https://github.com/lucide-icons/lucide",
+      "why_it_matters": "Clean SVG icon system for operational UI actions and status cues."
+    }
+  ],
+  "github_star_evidence": "As of research on 2026-05-14, GitHub pages/search results show very strong adoption signals: React about 245k stars, Next.js about 139k stars, Tailwind CSS about 95k stars, shadcn/ui about 114k stars, Radix Primitives about 18.9k stars, Motion about 31.9k stars, xyflow about 36.6k stars, Recharts about 27.1k stars, and Lucide about 22.6k stars. GitHub's own documentation frames stars as an approximate level of interest, not proof of quality. The practical conclusion is not 'use the most starred thing'; it is 'use mature, well-supported tools where hiring, debugging, examples, and community support are strong.'",
+  "premium_design_patterns": [
+    "Lead with the working product, not a landing-page hero. The first screen should already show the incident-to-skill-to-readiness flow.",
+    "Use a calm industrial command-center composition: compact header, one primary demo action, evidence graph in the visual center, readiness formula on the right or below depending on viewport.",
+    "Make the strongest visual moment the convergence proof: three incident cards animate into one canonical skill node, then into a shift readiness score.",
+    "Use premium restraint: fine borders, crisp spacing, soft neutral surfaces, high-contrast text, and one or two signal colors for risk and readiness.",
+    "Expose the calculation instead of hiding it. A visible formula breakdown feels more credible to Ford engineers than a large mysterious AI score.",
+    "Use progressive disclosure: the user sees the answer first, then can open evidence, skill normalization, and mentor action details."
+  ],
+  "recommended_tools": {
+    "core": ["Next.js", "React", "TypeScript"],
+    "styling": ["Tailwind CSS", "CSS variables/design tokens"],
+    "components": ["shadcn/ui", "Radix Primitives"],
+    "motion": ["Motion for React"],
+    "graph": ["xyflow / React Flow"],
+    "charts": ["Recharts only for simple readiness breakdowns; otherwise prefer SVG/CSS for the first demo"],
+    "icons": ["Lucide React"],
+    "quality": ["Playwright for visual and responsive checks", "axe or browser accessibility checks when available"]
+  },
+  "recommended_skills": [
+    "research-deep for evidence-backed tool and benchmark research",
+    "superpowers:brainstorming before locking the product experience",
+    "ui-ux-pro-max for accessibility, responsive behavior, interaction discipline, and visual hierarchy",
+    "ckm-design and ckm-ui-styling for tokens, product look, and component polish",
+    "design-review before shipping the first usable frontend",
+    "qa or qa-only plus Browser for local visual verification"
+  ],
+  "animation_and_svg_strategy": "Use motion as evidence, not decoration. Animate the graph paths from incident nodes into the canonical skill node, reveal the readiness score after the formula inputs appear, and use subtle status pulses only where a real system state changes. Build the background from a very faint static or slow-moving grid/trace SVG, not orbs, bokeh, heavy gradients, or decorative 3D. Respect prefers-reduced-motion by replacing path-draw animations with instant state changes. Keep animation durations mostly between 150ms and 300ms, with one slower graph reveal if it improves the demo narrative.",
+  "ux_information_architecture": [
+    {
+      "screen": "Demo Launcher",
+      "purpose": "One sentence, one action: 'KANIT finds tomorrow's risky skill from yesterday's quality mistakes.' The button triggers POST /demo/seed-readiness."
+    },
+    {
+      "screen": "Evidence Graph",
+      "purpose": "Show three incidents, their evidence issues, and their convergence into the same canonical skill. This is the wow moment and the anti-ChatGPT proof."
+    },
+    {
+      "screen": "Shift Readiness Board",
+      "purpose": "Show readiness score, risk level, station, role, affected team, and exact formula breakdown. The user should understand why the score is not arbitrary."
+    },
+    {
+      "screen": "Mentor Action",
+      "purpose": "Show the micro-practice task, mentor review status, and next recommended action. This proves the system closes the loop rather than merely generating advice."
+    }
+  ],
+  "accessibility_performance_rules": [
+    "Maintain at least WCAG AA contrast for body text and status labels; do not communicate risk by color alone.",
+    "Every interactive control should be keyboard reachable, visibly focused, and at least 44px tall on touch devices.",
+    "Use prefers-reduced-motion and keep important information available without animation.",
+    "Reserve stable dimensions for graph panels, score rings, buttons, cards, and loading states to prevent layout shift.",
+    "Avoid viewport-based font scaling; use responsive layout constraints instead.",
+    "Use SVG icons with text labels or tooltips for unfamiliar actions.",
+    "Keep bundle weight controlled by avoiding multiple animation and visualization libraries in the first version.",
+    "Design mobile first: graph can become a vertical evidence timeline on narrow screens instead of forcing a tiny canvas."
+  ],
+  "implementation_implications": [
+    "Create the frontend as a separate app, likely /frontend, so the FastAPI backend remains clean.",
+    "Build an API client around the existing backend endpoints and keep response fixtures only for local UI development, not as the main demo truth.",
+    "The demo should call the real backend seed-readiness endpoint, then render returned convergence_proof, readiness score, score_breakdown, and learning/mentor actions.",
+    "React Flow nodes should use KANIT domain language: Incident, Evidence Issue, Canonical Skill, Station, Role, Shift Readiness.",
+    "The first version should not require authentication, n8n, MCP, RAG, or real Ford integrations to impress; those can be shown as future integration points."
+  ],
+  "what_to_avoid": [
+    "Do not build a generic SaaS dashboard with many cards, charts, and filters; it will dilute the story.",
+    "Do not open with a marketing landing page. The first viewport must show the actual product behavior.",
+    "Do not add Three.js, GSAP, Lottie, or Rive just to look advanced. In this problem, flashy motion can reduce trust.",
+    "Do not hide the readiness formula behind a vague AI score.",
+    "Do not make the palette Ford-blue-only, dark-blue-only, purple-gradient, beige, or decorative. It should feel operational and premium.",
+    "Do not overuse glassmorphism, floating cards, nested cards, glowing blobs, or AI-template visual tropes.",
+    "Do not show COPQ as a primary feature unless real cost inputs are available; it can look like a calculator."
+  ],
+  "demo_story_implications": "The pitch should begin with user value: 'KANIT finds tomorrow's risky skill from yesterday's quality mistakes.' The technical reveal comes second: 'It normalizes messy AI labels into a fixed skill ontology, mines repeated evidence patterns, and computes readiness with an auditable formula.' The three-minute demo should spend most of its time on the evidence graph and formula breakdown, not settings, exports, or integrations.",
+  "sources": [
+    "https://github.com/facebook/react",
+    "https://github.com/vercel/next.js",
+    "https://github.com/tailwindlabs/tailwindcss",
+    "https://github.com/shadcn-ui/ui",
+    "https://github.com/radix-ui/primitives",
+    "https://github.com/motiondivision/motion",
+    "https://github.com/xyflow/xyflow",
+    "https://github.com/recharts/recharts",
+    "https://github.com/lucide-icons/lucide",
+    "https://docs.github.com/en/rest/activity/starring"
+  ],
+  "uncertain": [
+    "Exact GitHub star counts are rounded on GitHub pages and can change daily.",
+    "The final choice between a pure SVG graph and xyflow/React Flow should be made after checking the desired mobile interaction and implementation speed.",
+    "The exact visual tone should be validated against the final buildathon presentation format and available frontend time."
+  ]
+}

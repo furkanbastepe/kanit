@@ -1,0 +1,21 @@
+topic: kanit_demo_risk_research
+execution:
+  output_dir: ./kanit_demo_risk_research/results
+  batch_size: 5
+  items_per_agent: 1
+items:
+  - name: Skill Ontology and LLM Normalization Risk
+    category: AI Reliability / Taxonomy / Manufacturing Quality
+    description: Research whether LLM-generated free-form labels are unreliable for pattern mining, how fixed ontologies, controlled vocabularies, schema-constrained outputs, canonical IDs, and human-reviewed taxonomies are used in enterprise AI, quality systems, and manufacturing analytics.
+  - name: Explainable Readiness Scoring
+    category: Scoring Models / Quality Engineering / AI Governance
+    description: Research whether manufacturing and enterprise users accept arbitrary AI scores, best practices for explainable formula-based risk scoring, auditability, scorecards, quality risk metrics, and how readiness or risk scores should be justified in a Ford-facing demo.
+  - name: Deterministic Demo and Live AI Reliability
+    category: Demo Strategy / AI Product Reliability
+    description: Research best practices for demoing AI products in hackathons and enterprise contexts, including deterministic sample cases, fallback boundaries, live model risk, schema validation, repeatability, and how to avoid looking like a mock while maintaining a reliable demo.
+  - name: COPQ Proxy Credibility
+    category: Cost of Poor Quality / Manufacturing Economics
+    description: Research whether user-assumption-based COPQ and scrap exposure estimates are credible in manufacturing demos, what data is normally needed for serious COPQ analysis, and whether KANIT should keep, hide, or defer the COPQ/scrap proxy.
+  - name: Buildathon Audience and Pitch Focus
+    category: Buildathon Strategy / Ford Otosan / AI Education Demo
+    description: Research how AI buildathon projects are evaluated, how to balance commercial pitch versus working prototype, and what a Ford Otosan and UpSchool audience is likely to reward in a 3-minute demo: problem significance, AI integration, technical depth, and prototype clarity.

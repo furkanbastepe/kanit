@@ -1,0 +1,168 @@
+{
+  "research_item": "Motion SVG and Premium Interaction",
+  "executive_verdict": "Use Motion for React plus custom SVG as the default interaction layer. Use GSAP only for a single advanced SVG path-drawing sequence if Motion cannot express it cleanly. Avoid making Rive, Lottie, WebGL, or Three.js part of the first buildathon demo unless there is a very specific asset that proves the core product story. For KANIT, premium should mean calm confidence, fast comprehension, and evidence movement, not a flashy agency website.",
+  "relevance_to_kanit": "KANIT's strongest demo moment is not a decorative hero animation. It is the visual proof that three separate quality incidents converge into the same canonical skill gap, then produce an explainable shift readiness score. Motion and SVG should make that causal chain obvious in under 20 seconds: incidents enter, evidence paths draw, the skill node lights up, the formula expands, and the mentor action appears. This directly supports the Ford buildathon criteria because it shows a real problem, AI-assisted analysis, and a working prototype without hiding behind a generic dashboard.",
+  "benchmark_repos_or_products": [
+    {
+      "name": "Motion / Framer Motion",
+      "role": "Primary animation library for React micro-interactions, layout transitions, SVG path animation, reduced-motion support, and state-driven UI choreography.",
+      "source": "https://github.com/motiondivision/motion"
+    },
+    {
+      "name": "GSAP",
+      "role": "Best-in-class specialist tool for complex SVG timelines, DrawSVG-style line reveals, scroll choreography, and precise sequencing. For KANIT, it should remain optional because adding it increases conceptual weight.",
+      "source": "https://github.com/greensock/GSAP"
+    },
+    {
+      "name": "Lottie Web",
+      "role": "Useful when a designer exports a finished After Effects animation, but less suitable for data-driven evidence graphs because the animation becomes an asset pipeline rather than product logic.",
+      "source": "https://github.com/airbnb/lottie-web"
+    },
+    {
+      "name": "Rive",
+      "role": "Strong for interactive character/state-machine illustrations, but for this project it risks becoming an impressive side-show. Use later for onboarding or a branded assistant avatar, not for the first demo core.",
+      "source": "https://rive.app/docs/runtimes/getting-started"
+    },
+    {
+      "name": "xyflow / React Flow",
+      "role": "Good benchmark for node-based visual explanations. KANIT may use React Flow for the evidence graph, or build a custom SVG graph if the demo is only four to eight nodes.",
+      "source": "https://xyflow.com/open-source"
+    },
+    {
+      "name": "shadcn/ui",
+      "role": "Accessible component baseline for buttons, dialogs, tabs, tooltips, badges, progress, and command surfaces. It prevents the product from looking like a raw hackathon prototype.",
+      "source": "https://github.com/shadcn-ui/ui"
+    }
+  ],
+  "github_star_evidence": [
+    "shadcn-ui/ui shows about 114k GitHub stars in the GitHub API response opened during this research, which makes it a strong default for modern React component scaffolding. Stars prove adoption, not design quality.",
+    "motiondivision/motion is reported around 31.8k to 31.9k stars by Star History and vercel.land, and the GitHub README says Motion is the successor naming path for Framer Motion with React, JavaScript, and Vue packages. Stars prove ecosystem confidence, not that every animation is appropriate.",
+    "greensock/GSAP appears around 23.6k stars in the GitHub search result. Its README emphasizes high-performance animation across CSS, SVG, canvas, React, Vue, WebGL, and motion paths. Stars prove longevity and depth, but it can be overkill for a focused SaaS demo.",
+    "airbnb/lottie-web appears around 31.8k stars in the GitHub result. Its README frames Lottie as a way to render After Effects animations natively on web and mobile. Stars prove adoption, but not a good fit for live data visualization.",
+    "rive-app organization data shows rive-wasm under 1k stars and rive-react around 1.1k stars, while Rive's official docs confirm open-source runtimes for web and React. Smaller star counts do not mean weak product quality, but the runtime and asset workflow are less trivial than simple SVG plus Motion.",
+    "xyflow's open-source page emphasizes transparency, MIT licensing, and a GitHub star history that trends upward. It is a relevant reference for evidence graph UX, but the first KANIT demo may not need the full library if the graph is small and deterministic."
+  ],
+  "premium_design_patterns": [
+    "Product-first opening: the first viewport should be the working KANIT control room, not a marketing landing page. The user should instantly see the sentence: 'KANIT finds the risky skill before the shift starts.'",
+    "Evidence convergence as the signature scene: three incident cards animate into one canonical skill node through thin SVG paths. This is the visual equivalent of the product thesis.",
+    "Explainable score reveal: the readiness score should count down from 100 only while its formula terms appear beside it. The audience sees why the score is 48, not just that an AI produced a number.",
+    "Operational calm: use a light industrial canvas, generous whitespace, thin dividers, subtle grid lines, restrained accent colors, and sharp typography. Avoid dark cyber dashboards and purple-blue AI gradients.",
+    "Motion as state feedback: loading, analysis progress, path drawing, risk escalation, and mentor approval transitions should tell the user what happened. No idle floating shapes, bokeh, or decorative blobs.",
+    "Awwwards influence should be limited to craft: precise typography, sequencing, hover affordances, tasteful SVG lines, and a memorable hero interaction. Do not copy portfolio-site tropes like giant text masks, scroll-jacking, or cinematic parallax."
+  ],
+  "recommended_tools": {
+    "framework": "Next.js or Vite React with TypeScript. If speed matters most, Vite React is leaner; if portfolio polish and routing/deployment matter, Next.js is more impressive.",
+    "styling": "Tailwind CSS with design tokens in CSS variables. Use shadcn/ui selectively for accessible primitives, but restyle heavily so the app does not look like a default template.",
+    "animation": "Motion for React as the primary library. Use useReducedMotion, variants, AnimatePresence, layout animations, and SVG path animation. Keep durations mostly 160-320ms, with the evidence graph reveal allowed to run around 800-1200ms.",
+    "advanced_animation_optional": "GSAP only if a hand-crafted evidence path sequence becomes hard to maintain in Motion. Do not use GSAP for basic fades, hovers, or counters.",
+    "svg": "Custom inline SVG for the evidence graph, readiness ring, station map, and skill node relationships. Inline SVG keeps animation data-driven and auditable.",
+    "graph": "Custom SVG for the buildathon demo. React Flow or xyflow becomes useful later if the graph becomes editable, zoomable, or has more than 20 nodes.",
+    "charts": "CSS/SVG microcharts or Recharts for small bars and trends. Avoid heavy analytics dashboards in the demo.",
+    "icons": "Lucide React for interface icons, with custom SVG only for the KANIT mark and evidence graph symbols.",
+    "assets": "Avoid stock imagery. Use product-native visuals: incident cards, inspection station tags, evidence nodes, formula chips, and a clean operational map.",
+    "quality_checks": "Playwright or the Browser plugin for desktop/mobile screenshots, reduced-motion checks, layout overlap checks, and backend API integration testing."
+  },
+  "recommended_skills": [
+    "research-deep for tool and benchmark research before locking design decisions.",
+    "superpowers:brainstorming before implementation, because the frontend concept must be approved before code is written.",
+    "ui-ux-pro-max for accessibility, motion restraint, interaction design, responsive layout, and performance discipline.",
+    "ckm-design and ckm-ui-styling for visual identity, design tokens, component styling, and polished execution.",
+    "design-review or qa before final delivery to catch generic AI visuals, awkward spacing, contrast issues, and mobile layout problems.",
+    "superpowers:verification-before-completion before claiming the frontend is ready."
+  ],
+  "animation_and_svg_strategy": {
+    "core_principle": "Every animation must answer one of three questions: what evidence came in, what pattern was found, or what action must happen next.",
+    "signature_animation": "Animate three incident cards into an evidence graph: each card sends a thin line to a canonical skill node named effectiveness_verification; the node receives three pulses; then a 'repeat gap detected' label appears with the Why This Gap explanation.",
+    "readiness_animation": "Show the score as a formula, not a mystery gauge: base 100 appears first, each penalty chip subtracts visibly, and the final readiness score locks with a timestamp and rule version.",
+    "svg_usage": "Use inline SVG for paths, rings, station maps, and connectors. Animate stroke-dashoffset, opacity, and transforms. Keep text as real HTML when possible for accessibility and crisp rendering.",
+    "motion_library_usage": "Use Motion for mounting, unmounting, state transitions, hover feedback, button press states, and reduced-motion branching. Prefer transform and opacity.",
+    "gsap_usage": "Use GSAP only if the graph path choreography needs timeline-level control. If used, isolate it to one component so the rest of the app remains ordinary React state.",
+    "lottie_usage": "Do not use Lottie for the evidence graph. It is better for decorative onboarding loops or a small empty-state animation, but KANIT's proof needs live data and traceability.",
+    "rive_usage": "Do not use Rive in the first build unless a polished interactive assistant mark already exists. Rive can be a later brand layer, but a state-machine animation will not prove the backend intelligence.",
+    "what_premium_feels_like": "Fast, legible, quiet, and exact. The screen should feel like a high-end engineering tool, not an AI template."
+  },
+  "ux_information_architecture": [
+    {
+      "screen": "Demo Command",
+      "purpose": "One clear action starts the story: 'Analyze 3 closed 8D cases'. Show source files as small evidence tiles and an API status pill so the demo feels live.",
+      "motion": "Tiles enter with short staggered opacity and y-transforms; no parallax."
+    },
+    {
+      "screen": "Evidence Graph",
+      "purpose": "The main wow moment: incidents, root causes, evidence findings, employee/role/station metadata, and the canonical skill gap connect in one readable graph.",
+      "motion": "SVG paths draw toward the skill node; repeated issue count increments; the Why This Gap panel appears."
+    },
+    {
+      "screen": "Shift Readiness",
+      "purpose": "Show tomorrow's A Shift readiness score with station and role context. The user sees that the product changed from 'report analyzer' into 'pre-shift risk intelligence'.",
+      "motion": "Formula terms reveal in sequence. The score should never appear without its breakdown."
+    },
+    {
+      "screen": "Mentor Action",
+      "purpose": "Convert the risk into one practical learning/mentor action: five-minute scenario, evidence expected, mentor approval state.",
+      "motion": "Task card slides in from the readiness finding, showing causal continuity."
+    }
+  ],
+  "accessibility_performance_rules": [
+    "Respect prefers-reduced-motion. Motion's useReducedMotion hook and CSS media queries should reduce path travel, parallax, and auto-running animation; critical state changes should still be visible through opacity or instant state.",
+    "Keep WCAG 2.2 AA contrast: normal text at least 4.5:1 and large text at least 3:1. Risk colors must also have labels/icons, not color alone.",
+    "Animate transform and opacity by default. Avoid animating width, height, left, top, margins, filters, and large shadows because these can trigger layout or paint work.",
+    "Reserve stable dimensions for graph nodes, cards, score rings, and action panels to avoid cumulative layout shift during live demo loading.",
+    "All interactive targets should be at least 44x44 CSS pixels, keyboard focus-visible, and reachable without hover.",
+    "Use semantic HTML for text and real buttons. Do not put critical labels inside SVG-only text if screen readers or copy/paste matter.",
+    "Use skeletons and staged progress states so API latency feels intentional: 'Parsing cases', 'Normalizing skills', 'Mining repeat gaps', 'Scoring readiness'.",
+    "Keep animation count low: one signature graph reveal, one formula reveal, and small hover/focus feedback. Too much motion will make the product feel less serious."
+  ],
+  "implementation_implications": [
+    "The frontend should call POST /demo/seed-readiness for the deterministic buildathon sequence, then render the returned convergence proof, readiness score, and evidence trace. This avoids file-upload friction during the three-minute demo.",
+    "The evidence graph component should accept backend entities rather than hard-coded labels: incidents, findings, canonical skill IDs, station, role, team, and why-this-gap explanation.",
+    "The readiness component should render score_breakdown and formula from the backend. Never let the frontend invent the score.",
+    "The UI should include a small 'AI did not choose arbitrary labels' proof panel showing canonical ontology mapping, e.g. 'corrective action follow-up' mapped to effectiveness_verification.",
+    "Use an API client layer with typed DTOs so the frontend can later support web, mobile, and CLI clients consistently.",
+    "Do not build RAG, n8n, or MCP into the visual story yet. They can be technical expansion points, but the demo should stay focused on evidence-to-skill-to-readiness.",
+    "If a design system is created, define tokens for background, surface, border, text, muted text, evidence blue, skill green, risk amber, critical red, and focus ring. Do not create a one-hue palette."
+  ],
+  "what_to_avoid": [
+    "Do not open with a vague AI coach headline. Open with the user benefit: 'Tomorrow's shift risk, found from yesterday's quality evidence.'",
+    "Do not use a generic SaaS dashboard full of KPIs. Four clear scenes beat twelve widgets.",
+    "Do not use dark neon, purple gradients, glassmorphism everywhere, orbiting blobs, bokeh, or decorative 3D machinery.",
+    "Do not make COPQ/scrap savings the visual centerpiece unless real cost data is connected. Keep it as a later business panel.",
+    "Do not use Lottie or Rive to fake intelligence. The impressive part must come from live backend data rendered as evidence paths and formula terms.",
+    "Do not hide the score formula. Ford-facing reviewers will distrust an unexplained risk number.",
+    "Do not make the graph editable in the demo. Editability distracts from the insight.",
+    "Do not overuse Awwwards tropes such as scroll hijacking, huge reveal text, slow cinematic transitions, or navigation that prioritizes novelty over comprehension."
+  ],
+  "demo_story_implications": {
+    "opening_line": "KANIT finds the risky skill before the shift starts.",
+    "technical_defense_line": "ChatGPT summarizes one report; KANIT normalizes many quality incidents into a fixed skill ontology, proves the repeated gap, and calculates readiness with an auditable formula.",
+    "best_visual_moment": "Three incident paths converge into one skill gap node, then the same node drives the shift readiness score.",
+    "three_minute_sequence": [
+      "0:00-0:25: Show the problem in one sentence and click the demo command.",
+      "0:25-1:25: Watch the evidence graph converge; pause on Why This Gap.",
+      "1:25-2:10: Show the readiness score and formula breakdown.",
+      "2:10-2:45: Show the mentor micro-task and approval state.",
+      "2:45-3:00: Close with the ChatGPT differentiation line."
+    ],
+    "why_it_will_feel_impressive": "The audience sees a causal machine, not a chatbot wrapper: raw incidents become canonical skill evidence, then operational readiness, then an action."
+  },
+  "sources": [
+    "https://github.com/motiondivision/motion",
+    "https://motion.dev/docs/react-use-reduced-motion",
+    "https://motion.dev/motion/component/",
+    "https://github.com/greensock/GSAP",
+    "https://github.com/airbnb/lottie-web",
+    "https://rive.app/docs/runtimes/getting-started",
+    "https://github.com/rive-app/rive-wasm",
+    "https://xyflow.com/open-source",
+    "https://github.com/shadcn-ui/ui",
+    "https://www.awwwards.com/",
+    "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Media_queries/Using_for_accessibility",
+    "https://web.dev/animations-and-performance/",
+    "https://web.dev/animations-guide/",
+    "https://web.dev/optimize-cls",
+    "https://www.w3.org/TR/wcag/",
+    "https://www.star-history.com/motiondivision/motion",
+    "https://www.vercel.land/repo/motiondivision/motion"
+  ],
+  "uncertain": []
+}

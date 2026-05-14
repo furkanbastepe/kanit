@@ -1,0 +1,17 @@
+# Sentetik Vaka 01: Eksik Kanıtlı 8D/CAPA
+
+Problem: Ford hattına sevk edilen braket parçasında çapak tespit edildi. Müşteri kalite ekibi QIM benzeri bir uygunsuzluk bildirimi açtı.
+
+Containment: Sevkiyat bekleyen 120 adet stok ayrıldı ve görsel kontrol başlatıldı.
+
+Kök neden:
+
+Düzeltici aksiyon: Operatöre yeniden eğitim verilecek.
+
+Etkinlik doğrulama:
+
+Sorumlu: Kalite Mühendisi Aylin
+
+Termin:
+
+Not: Bu vaka bilerek zayıf bırakılmıştır; kapanış için kök neden, doğrulama tarihi ve düzeltici aksiyon kanıtı eksiktir.

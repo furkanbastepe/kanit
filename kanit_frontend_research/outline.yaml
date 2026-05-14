@@ -1,0 +1,18 @@
+topic: "kanit_frontend_research"
+project: "Kanıt Frontend Deep Research"
+description: "Ford buildathon için Kanıt backend'inin üstüne kurulacak premium, anlaşılır ve demo odaklı frontend tasarım/araç araştırması."
+execution:
+  output_dir: "/Users/furkan/Desktop/proje_SON/kanit_frontend_research/results"
+  batch_size: 5
+  items_per_agent: 1
+items:
+  - name: "High-Star Frontend Stack"
+    topic: "Next.js, React, Tailwind, shadcn/ui, Radix, Motion gibi yüksek yıldızlı ve üretim dostu frontend stacklerinin Kanıt için değerlendirilmesi."
+  - name: "Graph and Data Visualization"
+    topic: "Evidence graph, readiness skoru ve skill-gap convergence için React Flow, D3, Recharts, SVG tabanlı veri görselleştirme seçenekleri."
+  - name: "Motion SVG and Premium Interaction"
+    topic: "Awwwards seviyesine yaklaşan ama kurumsal SaaS için göz yormayan motion, SVG, Lottie/Rive/GSAP/Framer Motion stratejisi."
+  - name: "Industrial SaaS UX Benchmarks"
+    topic: "Linear, Stripe, Awwwards data visualization örnekleri ve B2B SaaS dashboard desenlerinden Kanıt için uygulanabilir ilkeler."
+  - name: "KANIT Frontend Architecture and Demo"
+    topic: "Mevcut FastAPI backend endpointleriyle 3 dakikalık Ford demosu için bilgi mimarisi, ekranlar, API kontratı, responsive ve erişilebilir frontend planı."
