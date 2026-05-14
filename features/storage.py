@@ -21,7 +21,9 @@ from features.services.types import (
 )
 
 
-DEFAULT_DB_PATH = Path("kanit.sqlite3")
+import tempfile
+
+DEFAULT_DB_PATH = Path(os.getenv("KANIT_DB_PATH", str(Path(tempfile.gettempdir()) / "kanit.sqlite3")))
 
 
 class CaseStore:

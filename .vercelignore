@@ -1,0 +1,41 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Databases
+*.sqlite3
+*.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# Test / docs / research (not needed on Vercel)
+tests/
+docs/
+kanit_research/
+kanit_frontend_research/
+kanit_demo_risk_research/
+n8n/
+
+# Planning files
+idea.md
+prd.md
+tasks.md
+tech-stack.md
+ai-buildathon.md
+user-flow.md
+ai-buildathon.md
+
+# Misc
+.DS_Store
+Dockerfile
