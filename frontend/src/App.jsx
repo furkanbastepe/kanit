@@ -11,7 +11,9 @@ import {
   Play,
   RotateCcw,
   ShieldCheck,
+  Sparkles,
   UploadCloud,
+  Zap,
 } from "lucide-react";
 
 const API_BASE = import.meta.env.VITE_KANIT_API_BASE || "/api";
@@ -1517,14 +1519,11 @@ function LoopClosureCard({ incident }) {
 
 function SiteFooter() {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" aria-label="Site alt bilgisi">
       <div className="footer-inner">
-        <p className="footer-title">KANIT | Sanayi Çalışanı İçin Eğitim Çözümü.</p>
-        <p className="footer-copy">
-          Çalışanların hatalarına yönelik eğitim programları hazırlar.
-          <br />
-          Çalışanın gelişimini destekler.
-        </p>
+        <span className="footer-brand">KANIT</span>
+        <span className="footer-sep" aria-hidden="true">·</span>
+        <span className="footer-year">2026</span>
       </div>
     </footer>
   );
@@ -1669,7 +1668,7 @@ function LiveAnalysisStage({ incident, phase, error, selectedSample }) {
     return (
       <div className="live-empty error-state">
         <AlertTriangle size={26} aria-hidden="true" />
-        <strong>Canlı analiz durdu</strong>
+        <strong>Analiz durdu</strong>
         <p>{error}</p>
       </div>
     );
@@ -1678,72 +1677,134 @@ function LiveAnalysisStage({ incident, phase, error, selectedSample }) {
   if (!incident) {
     return (
       <div className="live-empty">
-        <div className="source-orbit" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </div>
-        <strong>{phase === "loading" ? "Sunucu çalışıyor" : "Rapor bekleniyor"}</strong>
-        <p>
-          {phase === "loading"
-            ? "Belge ajanı rapor alanlarını çıkarıyor. Bu adım gerçek API çağrısıdır."
-            : `${selectedSample?.title || "Public report"} kaynağını aç, PDF'i indir veya metni düzenleyip canlı analizi başlat.`}
-        </p>
+        {phase === "loading" ? (
+          <div className="analysis-loading-state">
+            <div className="pulse-ring-wrap" aria-hidden="true">
+              <span className="pulse-ring ring-a" />
+              <span className="pulse-ring ring-b" />
+              <span className="pulse-ring ring-c" />
+              <span className="pulse-core"><Zap size={14} /></span>
+            </div>
+            <strong>Analiz yapılıyor</strong>
+            <p>Belge ajanı 8D alanlarını çıkarıyor · Kural motoru skorluyor</p>
+          </div>
+        ) : (
+          <div className="source-orbit" aria-hidden="true">
+            <span /><span /><span />
+          </div>
+        )}
+        {phase !== "loading" && (
+          <>
+            <strong>Rapor bekleniyor</strong>
+            <p>
+              {selectedSample?.title
+                ? `"${selectedSample.title}" seçili — Analiz Et butonuna bas.`
+                : "Bir şablon seç ya da metin yapıştır, ardından Analiz Et butonuna bas."}
+            </p>
+          </>
+        )}
       </div>
     );
   }
 
-  const report = incident.case_report;
-  const document = report?.document || {};
-  const checklist = report?.checklist || {};
-  const readiness = incident.readiness_score || {};
+  const report = incident.case_report || {};
+  const doc = report.document || {};
+  const checklist = report.checklist || {};
+  const score = checklist.score ?? 0;
+  const isAi = doc.source === "nvidia+heuristic";
 
   return (
-    <div className="live-result">
-      {/* Step 1: Score */}
+    <div className="live-result-v2">
+      {/* ── 1. Score gauge ── */}
       <motion.div
-        className="live-score-card"
-        initial={{ opacity: 0, y: 18 }}
+        className="result-hero-row"
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
-        <span className="node-label">Canlı olay</span>
-        <strong>{readiness.status === "ready" ? "Readiness düşük risk" : "Readiness aksiyon istiyor"}</strong>
-        <div className="score-line">
-          <span className="score-value">{readiness.score ?? checklist.score ?? "--"}</span>
-          <span>/100</span>
+        <ScoreGaugeArc score={score} />
+        <div className="result-hero-meta">
+          <p className="result-label">Kanıt Kalite Skoru</p>
+          <p className="result-explanation">
+            {incident.readiness_score?.explanation
+              || `${checklist.issues?.length || 0} açık tespit edildi`}
+          </p>
+          <code className="result-incident-id">{incident.incident_id?.slice(-8)}</code>
         </div>
-        <code>{incident.incident_id}</code>
       </motion.div>
 
-      {/* Step 2: Extracted document fields */}
+      {/* ── 2. AI / heuristic summary ── */}
+      {doc.raw_summary && (
+        <motion.div
+          className="ai-summary-card"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="ai-card-header">
+            <Sparkles size={13} />
+            <span>{isAi ? "NVIDIA Ajan Değerlendirmesi" : "Belge Analizi"}</span>
+            <span className="ai-model-badge">{isAi ? "LLM+Heuristic" : "Heuristic"}</span>
+          </div>
+          <p className="ai-summary-text">
+            {doc.raw_summary.slice(0, 480)}
+            {doc.raw_summary.length > 480 ? "…" : ""}
+          </p>
+        </motion.div>
+      )}
+
+      {/* ── 3. Issue bars ── */}
+      {checklist.issues?.length > 0 && (
+        <motion.div
+          className="issue-bars-section"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="live-section-label">
+            <AlertTriangle size={11} /> Tespit Edilen Açıklar
+            <span className="live-section-badge">{checklist.issues.length} açık</span>
+          </span>
+          {checklist.issues.slice(0, 5).map((issue, i) => (
+            <AnalysisIssueBar key={issue.code} issue={issue} index={i} />
+          ))}
+        </motion.div>
+      )}
+
+      {/* ── 4. Extracted 8D fields ── */}
       <motion.div
         className="live-section"
-        initial={{ opacity: 0, y: 14 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.4, delay: 0.58, ease: [0.16, 1, 0.3, 1] }}
       >
         <span className="live-section-label">
           <FileText size={12} /> Çıkarılan 8D Alanları
-          <span className="live-section-badge">{document.source || "heuristic"}</span>
+          <span className="live-section-badge">{doc.source || "heuristic"}</span>
         </span>
         <div className="field-chips">
-          {Object.entries(FIELD_LABELS).map(([key, label]) => (
-            <span key={key} className={`field-chip ${document[key] ? "chip-found" : "chip-missing"}`}>
-              {document[key] ? <CheckCircle2 size={10} /> : <span className="chip-dash">—</span>}
+          {Object.entries(FIELD_LABELS).map(([key, label], i) => (
+            <motion.span
+              key={key}
+              className={`field-chip ${doc[key] ? "chip-found" : "chip-missing"}`}
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.72 + i * 0.055, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {doc[key] ? <CheckCircle2 size={10} /> : <span className="chip-dash">—</span>}
               {label}
-            </span>
+            </motion.span>
           ))}
         </div>
       </motion.div>
 
-      {/* Step 3: Skill gaps → Learning tasks loop */}
+      {/* ── 5. Skill gap → task flow ── */}
       {(incident.skill_gaps?.length > 0 || incident.learning_tasks?.length > 0) && (
         <motion.div
           className="live-loop-flow"
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.4, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="loop-flow-col">
             <span className="node-label">Beceri Açığı</span>
@@ -1753,9 +1814,7 @@ function LiveAnalysisStage({ incident, phase, error, selectedSample }) {
                 <span className="gap-title">{gap.title}</span>
               </div>
             ))}
-            {!incident.skill_gaps?.length && (
-              <span className="gap-none">Kritik açık yok</span>
-            )}
+            {!incident.skill_gaps?.length && <span className="gap-none">Kritik açık yok</span>}
           </div>
           <div className="loop-flow-arrow" aria-hidden="true">→</div>
           <div className="loop-flow-col">
@@ -1766,9 +1825,7 @@ function LiveAnalysisStage({ incident, phase, error, selectedSample }) {
                 <span>{task.title}</span>
               </div>
             ))}
-            {!incident.learning_tasks?.length && (
-              <span className="gap-none">Görev gerekmedi</span>
-            )}
+            {!incident.learning_tasks?.length && <span className="gap-none">Görev gerekmedi</span>}
             <div className="task-mentor-hint">
               <ShieldCheck size={11} />
               <span>Mentor onayı bekleniyor →</span>
@@ -1776,20 +1833,93 @@ function LiveAnalysisStage({ incident, phase, error, selectedSample }) {
           </div>
         </motion.div>
       )}
-
-      {/* Step 4: Checklist issues */}
-      {checklist.issues?.length > 0 && (
-        <div className="issue-list">
-          {checklist.issues.slice(0, 4).map((issue) => (
-            <article key={issue.code}>
-              <span>{issue.severity}</span>
-              <strong>{issue.title}</strong>
-              <p>{issue.suggested_action}</p>
-            </article>
-          ))}
-        </div>
-      )}
     </div>
+  );
+}
+
+function ScoreGaugeArc({ score }) {
+  const [display, setDisplay] = useState(0);
+  useEffect(() => {
+    if (!score) return;
+    let raf;
+    const t0 = performance.now();
+    const dur = 1100;
+    const tick = (now) => {
+      const p = Math.min((now - t0) / dur, 1);
+      setDisplay(Math.round((1 - Math.pow(1 - p, 3)) * score));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [score]);
+
+  const R = 58, CX = 80, CY = 82;
+  const p2c = (deg) => ({
+    x: CX + R * Math.cos((deg - 90) * Math.PI / 180),
+    y: CY + R * Math.sin((deg - 90) * Math.PI / 180),
+  });
+  const bgS = p2c(135); const bgE = p2c(44.9);
+  const bgPath = `M ${bgS.x.toFixed(2)} ${bgS.y.toFixed(2)} A ${R} ${R} 0 1 1 ${bgE.x.toFixed(2)} ${bgE.y.toFixed(2)}`;
+  const fillPct = Math.max(score / 100, 0.01);
+  const fgAngle = 135 + 270 * fillPct;
+  const largeArc = 270 * fillPct > 180 ? 1 : 0;
+  const fgS = p2c(135); const fgE = p2c(fgAngle);
+  const fgPath = `M ${fgS.x.toFixed(2)} ${fgS.y.toFixed(2)} A ${R} ${R} 0 ${largeArc} 1 ${fgE.x.toFixed(2)} ${fgE.y.toFixed(2)}`;
+  const color = score < 40 ? "#F87171" : score < 70 ? "#FCD34D" : "#4ADE80";
+  const band = score < 40 ? "KRİTİK" : score < 70 ? "ORTA" : "UYGUN";
+
+  return (
+    <div className="score-gauge-wrap">
+      <svg viewBox="0 0 160 115" className="score-gauge-svg" role="img" aria-label={`Kanıt skoru: ${score} / 100`}>
+        <path d={bgPath} fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="10" strokeLinecap="round" />
+        <motion.path
+          d={fgPath} fill="none" stroke={color} strokeWidth="10" strokeLinecap="round"
+          initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+        />
+        <text x={CX} y={CY} textAnchor="middle" fill={color}
+          style={{ fontSize: 28, fontWeight: 700, fontFamily: "IBM Plex Mono, monospace" }}>
+          {display}
+        </text>
+        <text x={CX} y={CY + 18} textAnchor="middle" fill="rgba(255,255,255,0.32)"
+          style={{ fontSize: 11, fontFamily: "IBM Plex Sans, sans-serif" }}>/100</text>
+        <text x={CX} y={CY + 34} textAnchor="middle" fill={color}
+          style={{ fontSize: 9, fontWeight: 600, letterSpacing: 1.5, fontFamily: "IBM Plex Mono, monospace" }}>
+          {band}
+        </text>
+      </svg>
+    </div>
+  );
+}
+
+const ISSUE_SEVERITY_CFG = {
+  CRITICAL: { color: "#F87171", width: 88 },
+  HIGH:     { color: "#FB923C", width: 64 },
+  MEDIUM:   { color: "#FCD34D", width: 42 },
+  LOW:      { color: "#86EFAC", width: 22 },
+};
+
+function AnalysisIssueBar({ issue, index }) {
+  const cfg = ISSUE_SEVERITY_CFG[issue.severity] || ISSUE_SEVERITY_CFG.MEDIUM;
+  return (
+    <motion.div
+      className="issue-bar-row"
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.52 + index * 0.08, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <span className="issue-bar-title">{issue.title}</span>
+      <div className="issue-bar-track">
+        <motion.div
+          className="issue-bar-fill"
+          style={{ background: cfg.color, width: `${cfg.width}%` }}
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 0.6 + index * 0.08, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        />
+      </div>
+      <span className="issue-severity-badge" style={{ color: cfg.color }}>{issue.severity}</span>
+    </motion.div>
   );
 }
 
