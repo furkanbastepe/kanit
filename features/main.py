@@ -18,7 +18,15 @@ from features.services.file_parser import bytes_to_text, normalize_case_text
 from features.services.skill_ontology import normalize_skill_label, ontology_payload
 from features.services.skill_intelligence import EvidenceToSkillService
 from features.services.types import EvidenceFile
-from features.storage import CaseStore
+
+
+def _build_store():
+    store_backend = os.getenv("KANIT_STORE", "sqlite").strip().lower()
+    if store_backend == "supabase":
+        from features.supabase_store import CaseStore as SupabaseCaseStore
+        return SupabaseCaseStore()
+    from features.storage import CaseStore as SqliteCaseStore
+    return SqliteCaseStore()
 
 
 app = FastAPI(
@@ -30,7 +38,7 @@ app = FastAPI(
     version="0.2.0",
 )
 
-store = CaseStore()
+store = _build_store()
 analyzer = CaseAnalyzer()
 skill_service = EvidenceToSkillService(store=store, case_analyzer=analyzer)
 
