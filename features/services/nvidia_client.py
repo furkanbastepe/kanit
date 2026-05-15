@@ -17,7 +17,7 @@ log = logging.getLogger(__name__)
 
 DEFAULT_NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1"
 DEFAULT_NVIDIA_TEXT_MODEL = "meta/llama-3.3-70b-instruct"
-DEFAULT_NVIDIA_VISION_MODEL = "nvidia/llama-nemotron-nano-vl-8b"
+DEFAULT_NVIDIA_VISION_MODEL = "meta/llama-3.2-11b-vision-instruct"
 DEFAULT_NVIDIA_OCR_MODEL = "nvidia/nemo-asr-ocr-v2"
 DEFAULT_NVIDIA_EMBED_MODEL = "nvidia/nv-embedqa-e5-v5"
 
