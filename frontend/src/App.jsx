@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 
 const API_BASE = import.meta.env.VITE_KANIT_API_BASE || "/api";
-const API_KEY = import.meta.env.VITE_KANIT_API_KEY || "";
 
 const LIVE_STAGES = [
   "Rapor metni okunuyor",
@@ -385,12 +384,10 @@ function App() {
 
           {isLive ? (
             <section className="risk-theater" aria-live="polite">
-              <div className="glass-stage live-stage">
-                <div className="stage-toolbar">
-                  <span>Analiz çalışıyor</span>
-                  <div className="toolbar-status">
-                    <StatusPill label={statusLabel} tone={health?.live_ai_enabled && !health?.allow_mock ? "verified" : "risk"} />
-                  </div>
+              <div className="analysis-dark-stage">
+                <div className="ads-toolbar">
+                  <span className="ads-toolbar-label">KANIT Analiz</span>
+                  <StatusPill label={statusLabel} tone={health?.live_ai_enabled && !health?.allow_mock ? "verified" : "risk"} />
                 </div>
                 <LiveAnalysisStage
                   incident={liveIncident}
@@ -546,7 +543,10 @@ function App() {
         </div>
       </section>
 
-      {/* ── SECTION 5: LAB (optional) ──────────────── */}
+      {/* ── SECTION 5: IMPACT ─────────────────────── */}
+      <ImpactSection />
+
+      {/* ── SECTION 6: LAB (optional) ──────────────── */}
       {displayMode === "lab" && (
         <section id="lab" ref={labRef} className="lab-section">
           <div className="lab-section-inner">
@@ -999,7 +999,19 @@ function HeroSection({ onScrollToDemo, onOpenLab, prefersReducedMotion }) {
           Şirketler eğitim ihtiyacını ankete sorar. KANIT, hatadan beceri ağacı çıkarır; kural motoru skorlar, mentor kapatır.
         </motion.p>
 
-        <motion.div className="hero-ctas" {...fadeUp(0.46)}>
+        <motion.div className="hero-stat-chips" {...fadeUp(0.40)}>
+          <span className="hero-stat-chip">
+            <span className="chip-num">7</span> kanonik beceri
+          </span>
+          <span className="hero-stat-chip chip-risk">
+            <span className="chip-num">32</span><span className="chip-unit">/100</span> readiness
+          </span>
+          <span className="hero-stat-chip chip-verified">
+            <span className="chip-num">3→1</span> yakınsama
+          </span>
+        </motion.div>
+
+        <motion.div className="hero-ctas" {...fadeUp(0.56)}>
           <button className="hero-btn-primary" type="button" onClick={onScrollToDemo}>
             Hemen Dene
           </button>
@@ -1529,6 +1541,113 @@ function SiteFooter() {
   );
 }
 
+function ImpactSection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  const metrics = [
+    {
+      value: "32",  unit: "/100",
+      label: "Tespit edilen readiness skoru",
+      sub:   "100 − 68 = 32 · deterministik hesap",
+      tone:  "risk",
+    },
+    {
+      value: "3→1", unit: "",
+      label: "Farklı ifade → tek beceri düğümü",
+      sub:   "Yakınsama kanıtı · ontoloji v1",
+      tone:  "neutral",
+    },
+    {
+      value: "4",   unit: " ceza",
+      label: "Otomatik tespit edilen açık",
+      sub:   "Kanıt skoru, tekrar, onay eksikliği",
+      tone:  "warning",
+    },
+  ];
+
+  const penalties = [
+    { label: "kanıt skoru", pts: 22, color: "#F87171" },
+    { label: "beceri",      pts: 12, color: "#FB923C" },
+    { label: "tekrar eden", pts: 30, color: "#FCD34D" },
+    { label: "onay",        pts:  4, color: "#A78BFA" },
+  ];
+  const total = penalties.reduce((s, p) => s + p.pts, 0);
+
+  return (
+    <section className="impact-section" ref={ref} aria-label="Prototip etki metrikleri">
+      <div className="section-inner">
+        <motion.div
+          className="section-eyebrow dark"
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+        >
+          Demo Sonuçları
+        </motion.div>
+        <motion.h2
+          className="impact-headline"
+          initial={{ opacity: 0, y: 28 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.65, delay: 0.1 }}
+        >
+          Prototip vakada<br />ne bulduk?
+        </motion.h2>
+
+        <div className="impact-metrics">
+          {metrics.map((m, i) => (
+            <motion.div
+              key={m.label}
+              className={`impact-metric tone-${m.tone}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: 0.2 + i * 0.1 }}
+            >
+              <span className="impact-metric-value">
+                {m.value}<span className="impact-metric-unit">{m.unit}</span>
+              </span>
+              <span className="impact-metric-label">{m.label}</span>
+              <span className="impact-metric-sub">{m.sub}</span>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div
+          className="impact-formula-wrap"
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.55 }}
+        >
+          <p className="impact-formula-title">Ceza dağılımı · toplam −{total}</p>
+          <div className="formula-bar">
+            {penalties.map((seg) => (
+              <div
+                key={seg.label}
+                className="formula-seg"
+                style={{ flex: seg.pts, background: seg.color }}
+                title={`${seg.label}: −${seg.pts}`}
+              >
+                −{seg.pts}
+              </div>
+            ))}
+          </div>
+          <div className="formula-labels">
+            {penalties.map((seg) => (
+              <div key={seg.label} className="formula-label-cell" style={{ flex: seg.pts }}>
+                {seg.label}
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <p className="impact-claims">
+          Bu metrikler KANIT demo vakasına aittir. Üretim ortamında Ford Otosan gerçek verileriyle kalibre edilmesi gerekir.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function ReportLab({
   samples,
   selectedSampleId,
@@ -1663,11 +1782,69 @@ function RoiPanel({ roiInputs, setRoiInputs, roiImpact, roiError, roiLoading, es
   );
 }
 
+function AnalysisPipelineViz({ incident }) {
+  const doc = incident.case_report?.document || {};
+  const checklist = incident.case_report?.checklist || {};
+  const score = checklist.score ?? 0;
+  const foundFields = Object.keys(FIELD_LABELS).filter((k) => doc[k]).length;
+  const totalFields = Object.keys(FIELD_LABELS).length;
+  const taskCount = incident.learning_tasks?.length || 0;
+  const scoreColor = score < 40 ? "#F87171" : score < 70 ? "#FCD34D" : "#4ADE80";
+
+  const nodes = [
+    { id: "rapor",   icon: <FileText size={15} />,    label: "Rapor",          sub: "8D / CAPA",             color: "#60A5FA", done: true  },
+    { id: "ajan",    icon: <Sparkles size={15} />,    label: "Belge Ajanı",    sub: `${foundFields}/${totalFields} alan`, color: "#A78BFA", done: true  },
+    { id: "skor",    icon: null, numVal: score,        label: "Kanıt Skoru",   sub: score < 40 ? "KRİTİK" : score < 70 ? "ORTA" : "UYGUN", color: scoreColor, done: true },
+    { id: "gorev",   icon: <CheckCircle2 size={15} />,label: "Öğrenme Görevi", sub: `${taskCount} görev`,    color: "#34D399", done: taskCount > 0 },
+    { id: "mentor",  icon: <ShieldCheck size={15} />, label: "Mentor Kapısı",  sub: "Onay bekleniyor",       color: "#FCD34D", done: false },
+  ];
+
+  return (
+    <div className="apv-row">
+      {nodes.map((node, i) => (
+        <Fragment key={node.id}>
+          <motion.div
+            className={`apv-node ${node.done ? "apv-done" : "apv-pending"}`}
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.08 + i * 0.16, duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="apv-bubble" style={{ borderColor: `${node.color}35`, background: `${node.color}10` }}>
+              {node.numVal !== undefined
+                ? <span style={{ color: node.color, fontFamily: "IBM Plex Mono,monospace", fontWeight: 700, fontSize: 14 }}>{node.numVal}</span>
+                : <span style={{ color: node.color, display: "flex" }}>{node.icon}</span>
+              }
+            </div>
+            <span className="apv-label">{node.label}</span>
+            <span className="apv-sub" style={{ color: node.id === "skor" ? node.color : undefined }}>{node.sub}</span>
+          </motion.div>
+          {i < nodes.length - 1 && (
+            <div className="apv-gap">
+              <motion.div
+                className="apv-line"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ delay: 0.22 + i * 0.16, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              />
+              <motion.span
+                className="apv-arrow"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.55 + i * 0.16 }}
+              >›</motion.span>
+            </div>
+          )}
+        </Fragment>
+      ))}
+    </div>
+  );
+}
+
 function LiveAnalysisStage({ incident, phase, error, selectedSample }) {
   if (phase === "error") {
     return (
-      <div className="live-empty error-state">
-        <AlertTriangle size={26} aria-hidden="true" />
+      <div className="las-empty las-error">
+        <AlertTriangle size={22} />
         <strong>Analiz durdu</strong>
         <p>{error}</p>
       </div>
@@ -1676,30 +1853,28 @@ function LiveAnalysisStage({ incident, phase, error, selectedSample }) {
 
   if (!incident) {
     return (
-      <div className="live-empty">
+      <div className="las-empty">
         {phase === "loading" ? (
-          <div className="analysis-loading-state">
-            <div className="pulse-ring-wrap" aria-hidden="true">
-              <span className="pulse-ring ring-a" />
-              <span className="pulse-ring ring-b" />
-              <span className="pulse-ring ring-c" />
-              <span className="pulse-core"><Zap size={14} /></span>
+          <>
+            <div className="las-spinner-wrap" aria-hidden="true">
+              <span className="las-ring las-ring-a" />
+              <span className="las-ring las-ring-b" />
+              <span className="las-ring las-ring-c" />
+              <span className="las-core"><Zap size={13} /></span>
             </div>
             <strong>Analiz yapılıyor</strong>
             <p>Belge ajanı 8D alanlarını çıkarıyor · Kural motoru skorluyor</p>
-          </div>
+          </>
         ) : (
-          <div className="source-orbit" aria-hidden="true">
-            <span /><span /><span />
-          </div>
-        )}
-        {phase !== "loading" && (
           <>
+            <div className="las-idle-icon" aria-hidden="true">
+              <FileText size={28} />
+            </div>
             <strong>Rapor bekleniyor</strong>
             <p>
               {selectedSample?.title
                 ? `"${selectedSample.title}" seçili — Analiz Et butonuna bas.`
-                : "Bir şablon seç ya da metin yapıştır, ardından Analiz Et butonuna bas."}
+                : "Bir şablon seç ya da metin yapıştır."}
             </p>
           </>
         )}
@@ -1707,132 +1882,129 @@ function LiveAnalysisStage({ incident, phase, error, selectedSample }) {
     );
   }
 
-  const report = incident.case_report || {};
-  const doc = report.document || {};
-  const checklist = report.checklist || {};
+  const doc = incident.case_report?.document || {};
+  const checklist = incident.case_report?.checklist || {};
   const score = checklist.score ?? 0;
   const isAi = doc.source === "nvidia+heuristic";
 
   return (
-    <div className="live-result-v2">
-      {/* ── 1. Score gauge ── */}
-      <motion.div
-        className="result-hero-row"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <ScoreGaugeArc score={score} />
-        <div className="result-hero-meta">
-          <p className="result-label">Kanıt Kalite Skoru</p>
-          <p className="result-explanation">
-            {incident.readiness_score?.explanation
-              || `${checklist.issues?.length || 0} açık tespit edildi`}
-          </p>
-          <code className="result-incident-id">{incident.incident_id?.slice(-8)}</code>
-        </div>
-      </motion.div>
+    <div className="las-result">
+      {/* ── Pipeline animasyonu ── */}
+      <AnalysisPipelineViz incident={incident} />
 
-      {/* ── 2. AI / heuristic summary ── */}
-      {doc.raw_summary && (
-        <motion.div
-          className="ai-summary-card"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="ai-card-header">
-            <Sparkles size={13} />
-            <span>{isAi ? "NVIDIA Ajan Değerlendirmesi" : "Belge Analizi"}</span>
-            <span className="ai-model-badge">{isAi ? "LLM+Heuristic" : "Heuristic"}</span>
-          </div>
-          <p className="ai-summary-text">
-            {doc.raw_summary.slice(0, 480)}
-            {doc.raw_summary.length > 480 ? "…" : ""}
-          </p>
-        </motion.div>
-      )}
+      <div className="las-body">
+        {/* ── Skor + Özet ── */}
+        <div className="las-top-row">
+          <motion.div
+            className="las-gauge-col"
+            initial={{ opacity: 0, scale: 0.88 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.85, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ScoreGaugeArc score={score} />
+            <code className="las-id">#{incident.incident_id?.slice(-6)}</code>
+          </motion.div>
 
-      {/* ── 3. Issue bars ── */}
-      {checklist.issues?.length > 0 && (
-        <motion.div
-          className="issue-bars-section"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="live-section-label">
-            <AlertTriangle size={11} /> Tespit Edilen Açıklar
-            <span className="live-section-badge">{checklist.issues.length} açık</span>
-          </span>
-          {checklist.issues.slice(0, 5).map((issue, i) => (
-            <AnalysisIssueBar key={issue.code} issue={issue} index={i} />
-          ))}
-        </motion.div>
-      )}
-
-      {/* ── 4. Extracted 8D fields ── */}
-      <motion.div
-        className="live-section"
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.58, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <span className="live-section-label">
-          <FileText size={12} /> Çıkarılan 8D Alanları
-          <span className="live-section-badge">{doc.source || "heuristic"}</span>
-        </span>
-        <div className="field-chips">
-          {Object.entries(FIELD_LABELS).map(([key, label], i) => (
-            <motion.span
-              key={key}
-              className={`field-chip ${doc[key] ? "chip-found" : "chip-missing"}`}
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.72 + i * 0.055, duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          {doc.raw_summary && (
+            <motion.div
+              className="las-summary-col"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             >
-              {doc[key] ? <CheckCircle2 size={10} /> : <span className="chip-dash">—</span>}
-              {label}
-            </motion.span>
-          ))}
+              <div className="las-summary-header">
+                <Sparkles size={11} />
+                <span>{isAi ? "NVIDIA Ajan Değerlendirmesi" : "Belge Analizi"}</span>
+                <span className="las-badge">{isAi ? "LLM+Heuristic" : "Heuristic"}</span>
+              </div>
+              <p className="las-summary-text">
+                {doc.raw_summary.slice(0, 400)}{doc.raw_summary.length > 400 ? "…" : ""}
+              </p>
+            </motion.div>
+          )}
         </div>
-      </motion.div>
 
-      {/* ── 5. Skill gap → task flow ── */}
-      {(incident.skill_gaps?.length > 0 || incident.learning_tasks?.length > 0) && (
+        {/* ── Açık bar'ları ── */}
+        {checklist.issues?.length > 0 && (
+          <motion.div
+            className="las-issues"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.15, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <p className="las-section-title">
+              <AlertTriangle size={11} /> Tespit Edilen Açıklar
+              <span className="las-badge">{checklist.issues.length} açık</span>
+            </p>
+            {checklist.issues.slice(0, 4).map((issue, i) => (
+              <AnalysisIssueBar key={issue.code} issue={issue} index={i} />
+            ))}
+          </motion.div>
+        )}
+
+        {/* ── 8D alan chip'leri ── */}
         <motion.div
-          className="live-loop-flow"
-          initial={{ opacity: 0, y: 12 }}
+          className="las-fields"
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ delay: 1.3, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="loop-flow-col">
-            <span className="node-label">Beceri Açığı</span>
-            {(incident.skill_gaps || []).slice(0, 3).map((gap, i) => (
-              <div key={i} className="gap-row">
-                <span className="gap-skill-tag">{displaySkillId(gap.skill_id)}</span>
-                <span className="gap-title">{gap.title}</span>
-              </div>
+          <p className="las-section-title">
+            <FileText size={11} /> Çıkarılan 8D Alanları
+            <span className="las-badge">{doc.source || "heuristic"}</span>
+          </p>
+          <div className="las-field-grid">
+            {Object.entries(FIELD_LABELS).map(([k, label], i) => (
+              <motion.span
+                key={k}
+                className={`las-chip ${doc[k] ? "las-chip-ok" : "las-chip-miss"}`}
+                initial={{ opacity: 0, scale: 0.82 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1.42 + i * 0.05, duration: 0.26 }}
+              >
+                {doc[k] ? <CheckCircle2 size={9} /> : <span className="las-chip-dash">—</span>}
+                {label}
+              </motion.span>
             ))}
-            {!incident.skill_gaps?.length && <span className="gap-none">Kritik açık yok</span>}
-          </div>
-          <div className="loop-flow-arrow" aria-hidden="true">→</div>
-          <div className="loop-flow-col">
-            <span className="node-label">Öğrenme Görevi</span>
-            {(incident.learning_tasks || []).slice(0, 2).map((task, i) => (
-              <div key={i} className="task-row">
-                <CheckCircle2 size={11} className="task-icon" />
-                <span>{task.title}</span>
-              </div>
-            ))}
-            {!incident.learning_tasks?.length && <span className="gap-none">Görev gerekmedi</span>}
-            <div className="task-mentor-hint">
-              <ShieldCheck size={11} />
-              <span>Mentor onayı bekleniyor →</span>
-            </div>
           </div>
         </motion.div>
-      )}
+
+        {/* ── Beceri açığı → görev akışı ── */}
+        {(incident.skill_gaps?.length > 0 || incident.learning_tasks?.length > 0) && (
+          <motion.div
+            className="las-loop-row"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.6, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="las-loop-col">
+              <p className="las-section-title">Beceri Açığı</p>
+              {(incident.skill_gaps || []).slice(0, 3).map((gap, i) => (
+                <div key={i} className="las-gap-row">
+                  <span className="las-skill-tag">{displaySkillId(gap.skill_id)}</span>
+                  <span className="las-gap-title">{gap.title}</span>
+                </div>
+              ))}
+              {!incident.skill_gaps?.length && <span className="las-none">Kritik açık yok</span>}
+            </div>
+            <div className="las-loop-arrow">→</div>
+            <div className="las-loop-col">
+              <p className="las-section-title">Öğrenme Görevi</p>
+              {(incident.learning_tasks || []).slice(0, 2).map((task, i) => (
+                <div key={i} className="las-task-row">
+                  <CheckCircle2 size={10} className="las-task-icon" />
+                  <span>{task.title}</span>
+                </div>
+              ))}
+              {!incident.learning_tasks?.length && <span className="las-none">Görev gerekmedi</span>}
+              <div className="las-mentor-hint">
+                <ShieldCheck size={10} />
+                <span>Mentor onayı bekleniyor →</span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 }
@@ -2163,7 +2335,7 @@ function ProofChip({ label, value, tone = "neutral", strong = false }) {
 }
 
 function apiHeaders() {
-  return API_KEY ? { "X-KANIT-API-Key": API_KEY } : {};
+  return {};
 }
 
 function displaySkillId(skillId) {

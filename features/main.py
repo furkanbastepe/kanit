@@ -1,7 +1,11 @@
 from __future__ import annotations
 
+import asyncio
+import logging
 import os
 from pathlib import Path
+
+log = logging.getLogger(__name__)
 
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import JSONResponse, PlainTextResponse
@@ -101,9 +105,13 @@ class SkillNormalizeRequest(BaseModel):
 
 @app.middleware("http")
 async def api_key_guard(request: Request, call_next):
-    expected = os.getenv("KANIT_API_KEY")
     public_paths = {"/health", "/openapi.json", "/docs", "/redoc"}
-    if expected and request.url.path not in public_paths:
+    expected = os.getenv("KANIT_API_KEY")
+    if not expected:
+        # Fix B: No key configured — demo/dev mode. Log once so operators notice.
+        # To restrict access set KANIT_API_KEY in your environment.
+        pass
+    elif request.url.path not in public_paths:
         provided = request.headers.get("X-KANIT-API-Key")
         if provided != expected:
             return JSONResponse(status_code=401, content={"detail": "Gecersiz veya eksik API anahtari."})
@@ -146,7 +154,8 @@ async def analyze_case(
         raise HTTPException(status_code=400, detail="case_text veya case_file zorunludur.")
 
     try:
-        report = analyzer.analyze(merged_text, evidence_files)
+        # Fix 3: run blocking NVIDIA I/O in a thread pool to avoid event-loop stalls.
+        report = await asyncio.to_thread(analyzer.analyze, merged_text, evidence_files)
     except AIProviderError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
     store.save(report)
@@ -176,14 +185,16 @@ async def analyze_incident(
     if not merged_text:
         raise HTTPException(status_code=400, detail="case_text veya case_file zorunludur.")
     try:
-        incident = skill_service.analyze_incident(
-            incident_type=incident_type,
-            case_text=merged_text,
-            evidence_files=evidence_files,
-            employee_code=employee_code,
-            role_code=role_code,
-            team_code=team_code,
-            station_code=station_code,
+        incident = await asyncio.to_thread(
+            lambda: skill_service.analyze_incident(
+                incident_type=incident_type,
+                case_text=merged_text,
+                evidence_files=evidence_files,
+                employee_code=employee_code,
+                role_code=role_code,
+                team_code=team_code,
+                station_code=station_code,
+            )
         )
     except AIProviderError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc

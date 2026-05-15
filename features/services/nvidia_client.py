@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import base64
 import json
+import logging
 import os
 import ssl
 import urllib.error
@@ -11,6 +12,8 @@ from dataclasses import dataclass
 import certifi
 
 from features.services.ai_client import AIProviderError, bool_from_env
+
+log = logging.getLogger(__name__)
 
 DEFAULT_NVIDIA_BASE_URL = "https://integrate.api.nvidia.com/v1"
 DEFAULT_NVIDIA_TEXT_MODEL = "meta/llama-3.1-8b-instruct"
@@ -136,3 +139,5 @@ class NvidiaClient:
     def _raise_or_fallback(self, message: str) -> None:
         if not self.allow_mock:
             raise AIProviderError(message)
+        # Fix 4b: log when silently falling back to mock so it's never invisible.
+        log.warning("KANIT mock fallback (allow_mock=True): %s", message)

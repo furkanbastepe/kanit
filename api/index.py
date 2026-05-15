@@ -8,8 +8,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 # Defaults — override via Vercel Environment Variables dashboard
-os.environ.setdefault("CIRAK_AI_MODE", "nvidia")
-os.environ.setdefault("CIRAK_ALLOW_MOCK", "true")
+os.environ.setdefault("KANIT_AI_MODE", "nvidia")
+os.environ.setdefault("KANIT_ALLOW_MOCK", "true")
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -22,12 +22,18 @@ from features.main import app as backend_app
 # /incidents/analyze, …) match without any changes to features/main.py.
 app = FastAPI(title="KANIT Gateway", docs_url=None, redoc_url=None)
 
+# Fix C: Restrict CORS origins via env var. Set KANIT_ALLOWED_ORIGINS to a
+# comma-separated list of allowed origins (e.g. "https://kanit.vercel.app").
+# Defaults to "*" only when not configured (local dev / demo mode).
+_raw_origins = os.getenv("KANIT_ALLOWED_ORIGINS", "")
+_allowed_origins = [o.strip() for o in _raw_origins.split(",") if o.strip()] or ["*"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=_allowed_origins,
     allow_credentials=False,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type", "X-KANIT-API-Key"],
 )
 
 app.mount("/api", backend_app)
